@@ -1,47 +1,17 @@
-# Hermanos Jota
+# E-commerce Mueblería Hermanos Jota
 
-## GitFlow del proyecto
+Este proyecto consiste en construir la fachada completa y la experiencia interactiva del cliente para una tienda en línea de muebles, utilizando tecnologías frontend.
 
-Para el desarrollo del proyecto, el equipo adoptó un flujo de trabajo basado en GitHub Flow, adaptado a la organización por sprints del trabajo práctico
+## Integrantes del Grupo 4
 
-### Rama principal
+- Valentina Andrada Perino (Referente) - Usuario GitHub: valenap-utn
+- Milagros Escarlon - Usuario GitHub: milagros888
+- Agustín Alberto Leiva - Usuario GitHub: agustin-arg
+- Julia Angela Pombo Ruiz - Usuario GitHub: juliapomboruiz
+- Sofia Erra - Usuario GitHub: SofiErra
 
-* **main** : es la _rama principal_ del repositorio y contiene la _versión estable_ del proyecto
+## Tecnologías Utilizadas
 
-### Ramas de entrega
-
-Para cada entrega se crea una rama a partir de `main`, que agrupa el desarrollo correspondiente a esa instancia:
-
-* `sprint-1`
-* `sprint-2`
-* `...`
-* `sprint-n`
-
-Estas ramas permiten trabajar de forma aislada sobre cada sprint sin afectar directamente la rama principal
-
-### Ramas de features
-
-A partir de cada rama de entrega, se crean ramas de funcionalidades específicas:
-
-* `feature/productos`
-* `feature/carrito`
-* `feature/users`
-
-Cada feature se desarrolla de forma independiente y luego se integra nuevamente en la rama de sprint correspondiente
-
-### Flujo de trabajo
-
-1. Se crea una rama de entrega desde `main`
-2. A partir de la rama `sprint-x`, se crean ramas `feature/...`
-3. Se desarrollan las funcionalidades en estas ramas
-4. Una vez finalizadas, se realiza un merge hacia `sprint-x`
-5. Cuando la entrega está completa y validada, se fusiona en `main`
-
-### Objetivo del flujo
-
-Este enfoque permite:
-
-* Organizar el trabajo por sprints
-* Desarrollar múltiples funcionalidades en paralelo
-* Mantener la estabilidad de la rama `main`
-* Facilitar la integración progresiva del proyecto
+- HTML5: Estructuración semántica de todo el sitio.
+- CSS3: Estilos aplicados utilizando diseño adaptable (Mobile First) mediante el Modelo de Cajas y Flexbox.
+- JavaScript (ES6): Lógica interactiva para la gestión dinámica de productos, manipulación del DOM, simulación de carga asíncrona mediante temporizadores, validaciones de formularios y control de eventos.
