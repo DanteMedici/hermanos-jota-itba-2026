@@ -1,0 +1,109 @@
+/* Tipografía INTER */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+/* Tipografía Playfair Display */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
+:root {
+    /* ===== Brand ===== */
+    --color-primary: #A0522D;
+    --color-secondary: #87A96B;
+
+    /* ===== Text ===== */
+    --color-text-titles: #A0522D;
+
+    /* ===== Backgrounds ===== */
+    --color-background: #F5E6D3;
+
+    /* ===== Detalles Premium / acentos ===== */
+    --color-premium: #D4A437;
+
+    /* ===== Detalles femeninos / acentos suaves ===== */
+    --color-suave: #C47A6D;
+
+    /* ===== Tipografías ===== */
+    --font-primary: 'Inter', sans-serif;
+    --font-editorial: 'Playfair Display', Georgia, serif;
+
+    /* Pesos Inter / Playfair */
+    --font-light: 300;
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-bold: 700;
+
+    /* Títulos principales */
+    --title-letter-spacing: 0.1em;
+
+    /* Texto del cuerpo */
+    --body-size: 1rem;
+    --body-line-height: 1.6;
+
+    /* Leyendas */
+    --caption-size: 0.75rem;
+    --caption-letter-spacing: 0.02em;
+
+    /* Botones y CTAs */
+    --cta-letter-spacing: 0.08em;
+
+    /* ===== LOGO ===== */
+    /*--logo-color-primary: var(--color-primary);*/
+    /*--logo-color-inverted: var(--color-background);*/
+
+    --logo-min-width-digital: 120px;
+}
+
+.texto-secundario-leyenda {
+    font-family: var(--font-primary), sans-serif;
+    font-weight: var(--font-light);
+
+    font-size: var(--caption-size);
+    letter-spacing: var(--caption-letter-spacing);
+}
+
+.texto-principal {
+    font-family: var(--font-primary), sans-serif;
+    font-weight: var(--font-regular);
+
+    font-size: var(--body-size);
+    line-height: var(--body-line-height);
+}
+
+.texto-enfasis-subtitulo {
+    font-family: var(--font-primary), sans-serif;
+    font-weight: var(--font-medium);
+}
+
+.texto-titulo-cta {
+    font-family: var(--font-primary), sans-serif;
+    /*font-weight: var(--font-bold);*/
+    font-weight: var(--font-medium);
+
+    text-transform: uppercase;
+    letter-spacing: var(--cta-letter-spacing);
+}
+
+.texto-titulo-elegante {
+    font-family: var(--font-editorial), Georgia, serif;
+    font-weight: var(--font-regular);
+
+    text-transform: uppercase;
+    letter-spacing: var(--title-letter-spacing);
+}
+
+.texto-enfasis-editorial {
+    font-family: var(--font-editorial), Georgia, serif;
+    font-weight: var(--font-bold);
+}
+
+.logo {
+    min-width: var(--logo-min-width-digital);
+    height: auto;
+}
+
+.logo-primary {
+    /* TODO: Chequear cómo se maneja el tema de los colores en extensiones .svg */
+}
+
+.logo-inverted {
+    /* TODO */
+}

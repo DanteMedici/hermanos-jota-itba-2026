@@ -1,0 +1,28 @@
+# Default ignored files
+.idea/
+*.iml
+/shelf/
+/.idea/workspace.xml
+# Editor-based HTTP Client requests
+/httpRequests/
+# Ignored default folder with query files
+/queries/
+# Datasource local storage ignored files
+/dataSources/
+/dataSources.local.xml
+
+target/
+dist/
+build/
+
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.env
+.env.local
+.env.*.local
+
+.DS_Store
+Thumbs.db
