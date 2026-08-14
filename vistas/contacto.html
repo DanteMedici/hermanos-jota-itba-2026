@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Contacto</title>
@@ -8,31 +9,306 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/contacto.css">
+
 </head>
+
 <body class="d-flex flex-column min-vh-100">
 
-<div id="header-placeholder"></div>
+    <div id="header-placeholder"></div>
 
-<main class="flex-grow-1">
-    <!-- TODO: solo se encuentran los header y footer realizados.
-                Quedaría pendiente el contenido específico de la vista en cuestión.
-     -->
-    <h1>VISTA DESDE CONTACTO</h1>
-</main>
+    <main class="flex-grow-1 py-5">
+        <div class="container my-4">
+            <!-- Hero/Header Section -->
+            <div class="row mb-5 text-center">
+                <div class="col-lg-8 mx-auto">
+                    <span class="texto-secundario-leyenda text-uppercase mb-2 d-block texto-marca-suave">Casa
+                        Taller</span>
+                    <h2 class="texto-titulo-elegante display-4 mb-3 texto-marca-primario">Contáctenos</h2>
+                    <p class="texto-principal fs-5 opacity-75 texto-marca-primario">
+                        Muebles que alimentan el alma. Escríbenos para consultas sobre piezas personalizadas,
+                        restauraciones bajo nuestro programa <strong
+                            class="texto-enfasis-subtitulo texto-marca-primario">Herencia Viva</strong> o visitas al
+                        taller.
+                    </p>
+                    <hr class="mx-auto my-4 divider-marca">
+                </div>
+            </div>
 
-<div id="footer-placeholder"></div>
+            <!-- Main Content: Form + Contact Info -->
+            <div class="row g-5">
+                <!-- Form Column -->
+                <div class="col-lg-7">
+                    <div class="p-4 p-md-5 rounded-0 border-0 shadow-sm bg-white border-marca-suave">
+                        <h3 class="texto-titulo-elegante fs-4 mb-4 texto-marca-primario">Envíanos un mensaje</h3>
+                        <form id="contactForm" class="needs-validation" novalidate>
+                            <div class="row g-3">
+                                <!-- Nombre -->
+                                <div class="col-md-6">
+                                    <label for="nombre"
+                                        class="form-label texto-secundario-leyenda text-uppercase texto-marca-primario">Nombre
+                                        Completo</label>
+                                    <input type="text"
+                                        class="form-control rounded-0 p-3 bg-light border-0 texto-principal" id="nombre"
+                                        required placeholder="Tu nombre">
+                                    <div class="invalid-feedback texto-secundario-leyenda">Por favor, ingresa tu nombre.
+                                    </div>
+                                </div>
+                                <!-- Email -->
+                                <div class="col-md-6">
+                                    <label for="email"
+                                        class="form-label texto-secundario-leyenda text-uppercase texto-marca-primario">Correo
+                                        Electrónico</label>
+                                    <input type="email"
+                                        class="form-control rounded-0 p-3 bg-light border-0 texto-principal" id="email"
+                                        required placeholder="tu@email.com">
+                                    <div class="invalid-feedback texto-secundario-leyenda">Por favor, ingresa un correo
+                                        electrónico válido.</div>
+                                </div>
+                                <!-- Teléfono -->
+                                <div class="col-md-6">
+                                    <label for="telefono"
+                                        class="form-label texto-secundario-leyenda text-uppercase texto-marca-primario">Teléfono
+                                        / WhatsApp</label>
+                                    <input type="tel"
+                                        class="form-control rounded-0 p-3 bg-light border-0 texto-principal"
+                                        id="telefono" placeholder="Ej: +54 11 1234-5678">
+                                </div>
+                                <!-- Motivo de consulta -->
+                                <div class="col-md-6">
+                                    <label for="motivo"
+                                        class="form-label texto-secundario-leyenda text-uppercase texto-marca-primario">Motivo
+                                        de Consulta</label>
+                                    <select class="form-select rounded-0 p-3 bg-light border-0 texto-principal"
+                                        id="motivo" required>
+                                        <option value="" disabled selected>Selecciona una opción</option>
+                                        <option value="consulta">Consulta General</option>
+                                        <option value="medida">Mueble a Medida / Personalizado</option>
+                                        <option value="herencia">Programa Herencia Viva (Restauración)</option>
+                                        <option value="taller">Inscripción a Taller de Cuidados</option>
+                                    </select>
+                                    <div class="invalid-feedback texto-secundario-leyenda">Por favor, selecciona un
+                                        motivo.</div>
+                                </div>
+                                <!-- Mensaje -->
+                                <div class="col-12">
+                                    <label for="mensaje"
+                                        class="form-label texto-secundario-leyenda text-uppercase texto-marca-primario">Mensaje</label>
+                                    <textarea class="form-control rounded-0 p-3 bg-light border-0 texto-principal"
+                                        id="mensaje" rows="5" required
+                                        placeholder="Cuéntanos sobre tu proyecto..."></textarea>
+                                    <div class="invalid-feedback texto-secundario-leyenda">Por favor, escribe tu
+                                        mensaje.</div>
+                                </div>
+                                <!-- Submit Button -->
+                                <div class="col-12 mt-4">
+                                    <button type="submit"
+                                        class="btn texto-titulo-cta py-3 px-5 border-0 rounded-0 w-100 w-sm-auto btn-marca-primario"
+                                        id="submitBtn">
+                                        Enviar Mensaje
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+                <!-- Contact Info Column -->
+                <div class="col-lg-5">
+                    <div class="d-flex flex-column h-100 justify-content-between g-4">
+                        <!-- Info Box -->
+                        <div class="p-4 p-md-5 rounded-0 border-0 shadow-sm bg-white mb-4 border-marca-suave">
+                            <h3 class="texto-titulo-elegante fs-4 mb-4 texto-marca-primario">Nuestra Casa Taller</h3>
+
+                            <div class="d-flex align-items-start mb-4">
+                                <span class="fs-4 me-3 texto-marca-secundario"><i
+                                        class="fa-solid fa-location-dot"></i></span>
+                                <div>
+                                    <h5 class="texto-enfasis-subtitulo mb-1 texto-marca-primario">Showroom y Taller</h5>
+                                    <p class="texto-principal mb-0 opacity-75 texto-marca-primario">
+                                        Av. San Juan 2847<br>
+                                        C1232AAB — Barrio de San Cristóbal<br>
+                                        Ciudad Autónoma de Buenos Aires, Argentina
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-4">
+                                <span class="fs-4 me-3 texto-marca-suave"><i class="fa-regular fa-clock"></i></span>
+                                <div>
+                                    <h5 class="texto-enfasis-subtitulo mb-1 texto-marca-primario">Horarios de Atención
+                                    </h5>
+                                    <p class="texto-principal mb-0 opacity-75 texto-marca-primario">
+                                        <strong>Lunes a Viernes:</strong> 10:00 - 19:00<br>
+                                        <strong>Sábados:</strong> 10:00 - 14:00
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start mb-4">
+                                <span class="fs-4 me-3 texto-marca-secundario"><i class="fa-solid fa-phone"></i></span>
+                                <div>
+                                    <h5 class="texto-enfasis-subtitulo mb-1 texto-marca-primario">Contacto Directo</h5>
+                                    <p class="texto-principal mb-1 opacity-75 texto-marca-primario">
+                                        <i class="fa-brands fa-whatsapp me-2 texto-marca-secundario"></i>
+                                        <a href="https://wa.me/541145678900" target="_blank"
+                                            class="text-decoration-none fw-medium texto-marca-primario">+54 11
+                                            4567-8900</a>
+                                    </p>
+                                    <p class="texto-principal mb-1 opacity-75 texto-marca-primario">
+                                        <i class="fa-regular fa-envelope me-2 texto-marca-secundario"></i>
+                                        <a href="mailto:info@hermanosjota.com.ar"
+                                            class="text-decoration-none texto-marca-primario">info@hermanosjota.com.ar</a>
+                                    </p>
+                                    <p class="texto-principal mb-0 opacity-75 texto-marca-primario">
+                                        <i class="fa-regular fa-envelope me-2 texto-marca-secundario"></i>
+                                        <a href="mailto:ventas@hermanosjota.com.ar"
+                                            class="text-decoration-none texto-marca-primario">ventas@hermanosjota.com.ar</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-start">
+                                <span class="fs-4 me-3 texto-marca-secundario"><i
+                                        class="fa-brands fa-instagram"></i></span>
+                                <div>
+                                    <h5 class="texto-enfasis-subtitulo mb-1 texto-marca-primario">Redes Sociales</h5>
+                                    <p class="texto-principal mb-0">
+                                        <a href="https://instagram.com/hermanosjota_ba" target="_blank"
+                                            class="text-decoration-none fw-medium texto-marca-primario">@hermanosjota_ba</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Map Embed -->
+                        <div
+                            class="flex-grow-1 rounded-0 overflow-hidden shadow-sm border-marca-suave mapa-taller-container">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3283.47958988636!2d-58.4055272!3d-34.6173661!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bccaeffb032d8b%3A0xc3f510842db117b9!2sAv.%20San%20Juan%202847%2C%20C1232AAB%20CABA!5e0!3m2!1ses!2sar!4v1700000000000!5m2!1ses!2sar"
+                                width="100%" height="100%" class="mapa-taller-iframe" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Herencia Viva program details -->
+            <div class="row mt-5 pt-5 g-4">
+                <div class="col-12 text-center mb-4">
+                    <span class="texto-secundario-leyenda text-uppercase mb-2 d-block texto-marca-suave">Compromiso
+                        Herencia Viva</span>
+                    <h3 class="texto-titulo-elegante display-4 mb-3 texto-marca-primario">Garantía y Sustentabilidad
+                    </h3>
+                    <p class="texto-principal col-lg-8 mx-auto opacity-75 texto-marca-primario">
+                        Creemos en la longevidad y el impacto responsable. Todas nuestras piezas son fabricadas con
+                        maderas nativas certificadas FSC (Algarrobo, Quebracho, Caldén) y acabadas con ceras y aceites
+                        100% naturales.
+                    </p>
+                </div>
+
+                <!-- Cards -->
+                <div class="col-md-6 col-lg-3">
+                    <div
+                        class="p-4 text-center bg-white h-100 d-flex flex-column justify-content-between rounded-0 border-marca-suave">
+                        <div>
+                            <span class="fs-2 mb-3 d-block texto-marca-premium"><i
+                                    class="fa-solid fa-shield-halved"></i></span>
+                            <h4 class="texto-titulo-elegante fs-5 mb-2 texto-marca-primario">Garantía de Vida</h4>
+                            <p class="texto-secundario-leyenda mb-0 opacity-75 texto-marca-primario">
+                                Garantía extendida de 10 años en estructura y 5 años en acabados.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div
+                        class="p-4 text-center bg-white h-100 d-flex flex-column justify-content-between rounded-0 border-marca-suave">
+                        <div>
+                            <span class="fs-2 mb-3 d-block texto-marca-secundario"><i
+                                    class="fa-solid fa-screwdriver-wrench"></i></span>
+                            <h4 class="texto-titulo-elegante fs-5 mb-2" texto-marca-primario>Restauración</h4>
+                            <p class="texto-secundario-leyenda mb-0 opacity-75 texto-marca-primario">
+                                Servicio especializado para recuperar, renovar y dar una segunda vida a tus piezas.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div
+                        class="p-4 text-center bg-white h-100 d-flex flex-column justify-content-between rounded-0 border-marca-suave">
+                        <div>
+                            <span class="fs-2 mb-3 d-block texto-marca-suave"><i
+                                    class="fa-solid fa-person-chalkboard"></i></span>
+                            <h4 class="texto-titulo-elegante fs-5 mb-2 texto-marca-primario">Talleres de Cuidado</h4>
+                            <p class="texto-secundario-leyenda mb-0 opacity-75 texto-marca-primario">
+                                Capacitaciones gratuitas sobre mantenimiento de madera con aceites y ceras naturales.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div
+                        class="p-4 text-center bg-white h-100 d-flex flex-column justify-content-between rounded-0 border-marca-suave">
+                        <div>
+                            <span class="fs-2 mb-3 d-block texto-marca-primario"><i
+                                    class="fa-solid fa-rotate-left"></i></span>
+                            <h4 class="texto-titulo-elegante fs-5 mb-2 texto-marca-primario">Recompra Garantizada</h4>
+                            <p class="texto-secundario-leyenda mb-0 opacity-75 texto-marca-primario">
+                                Garantizamos la recompra de tu mueble de hasta el 40% de su valor para futuras
+                                renovaciones.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <!-- Success Modal -->
+    <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content rounded-0 border-0 shadow-lg modal-marca">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close btn-close-marca" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-center p-4 p-md-5">
+                    <span class="fs-1 mb-3 d-block texto-marca-secundario"><i
+                            class="fa-regular fa-circle-check"></i></span>
+                    <h4 class="texto-titulo-elegante mb-3 texto-marca-primario">¡Mensaje Enviado!</h4>
+                    <p class="texto-principal mb-4 opacity-75 texto-marca-primario">
+                        Gracias por comunicarte con la Casa Taller. Hemos recibido tu consulta y uno de nuestros
+                        artesanos se contactará contigo a la brevedad.
+                    </p>
+                    <button type="button" class="btn texto-titulo-cta py-2 px-4 border-0 rounded-0 btn-marca-primario"
+                        data-bs-dismiss="modal">
+                        Entendido
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
-<script src="../js/layout.js"></script>
+    <script src="../js/layout.js"></script>
+    <script src="../js/contacto.js"></script>
 </body>
+
 </html>

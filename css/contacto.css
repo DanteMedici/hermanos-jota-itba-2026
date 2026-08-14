@@ -1,0 +1,78 @@
+/* ==========================================================================
+   ESTILOS ADICIONALES PARA LA VISTA DE CONTACTO
+   Creados para mantener la consistencia con el manual de marca (Hermanos Jota)
+   y asegurar que no existan estilos en línea (CSS inline) en el HTML.
+   ========================================================================== */
+
+/* Colores de texto corporativos basados en las variables de marca */
+.texto-marca-primario {
+    color: var(--color-primary);
+    /* Color principal: Terracota/Marrón cálido */
+}
+
+.texto-marca-secundario {
+    color: var(--color-secondary);
+    /* Color secundario: Verde oliva suave */
+}
+
+.texto-marca-suave {
+    color: var(--color-suave);
+    /* Color de acento suave: Rosa viejo/Cálido */
+}
+
+.texto-marca-premium {
+    color: var(--color-premium);
+    /* Color de acento premium: Dorado */
+}
+
+/* Bordes finos y sutiles utilizando el color principal con transparencia */
+.border-marca-suave {
+    border: 1px solid rgba(160, 82, 45, 0.15) !important;
+}
+
+/* Línea divisoria decorativa con el color y opacidad de la marca */
+.divider-marca {
+    width: 80px;
+    height: 2px;
+    background-color: var(--color-primary);
+    border: 0;
+    opacity: 0.3;
+}
+
+/* Botón principal adaptado a la paleta de colores y comportamiento hover */
+.btn-marca-primario {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-background);
+    transition: all 0.3s ease;
+}
+
+.btn-marca-primario:hover,
+.btn-marca-primario:focus,
+.btn-marca-primario:active {
+    background-color: var(--color-suave);
+    border-color: var(--color-suave);
+    color: var(--color-background);
+}
+
+/* Altura del contenedor del mapa interactivo */
+.mapa-taller-container {
+    height: 250px;
+}
+
+/* Filtro sepia/cálido para integrar visualmente el mapa con la estética de la marca */
+.mapa-taller-iframe {
+    border: 0;
+    filter: sepia(30%) contrast(90%) hue-rotate(-20deg);
+}
+
+/* Modal personalizado con el fondo alabastro y bordes terracota corporativos */
+.modal-marca {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-primary) !important;
+}
+
+/* Filtro sepia para el botón de cierre (X) del modal para que combine con la paleta cálida */
+.btn-close-marca {
+    filter: sepia(100%) hue-rotate(-20deg) saturate(300%);
+}
