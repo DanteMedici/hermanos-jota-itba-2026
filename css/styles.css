@@ -59,7 +59,7 @@ body {
     line-height: var(--body-line-height);
 }
 
-/* Leyendas */
+/* Textos secundarios y leyendas */
 .texto-secundario-leyenda {
     font-family: var(--font-primary), sans-serif;
     font-weight: var(--font-light);
@@ -69,7 +69,7 @@ body {
 }
 
 
-/* Texto del cuerpo */
+/* Texto del cuerpo / principal */
 .texto-principal {
     font-family: var(--font-primary), sans-serif;
     font-weight: var(--font-regular);
