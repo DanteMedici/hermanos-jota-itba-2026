@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Detalle Producto</title>
+    <title>Aparador Uspallata | Hermanos Jota</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -21,10 +21,93 @@
 <div id="header-placeholder"></div>
 
 <main class="flex-grow-1">
-    <!-- TODO: solo se encuentran los header y footer realizados.
-                Quedaría pendiente el contenido específico de la vista en cuestión.
-     -->
-    <h1>VISTA DESDE PRODUCTO</h1>
+    <div class="container py-4 py-lg-5">
+
+        <nav aria-label="Migas de pan" class="mb-4">
+            <ol class="breadcrumb detalle-breadcrumb">
+                <li class="breadcrumb-item"><a href="productos.html">Productos</a></li>
+                <li class="breadcrumb-item active" aria-current="page" data-detalle="breadcrumb">Aparador Uspallata</li>
+            </ol>
+        </nav>
+
+        <article class="row g-4 g-lg-5">
+
+            <!-- Imagen principal -->
+            <div class="col-12 col-lg-7">
+                <figure class="detalle-figura mb-0">
+                    <img src="../assets/img/aparador-uspallata.png"
+                         alt="Aparador Uspallata en nogal macizo, vista frontal"
+                         class="detalle-imagen"
+                         data-detalle="imagen">
+                </figure>
+            </div>
+
+            <!-- Panel de información -->
+            <div class="col-12 col-lg-5">
+                <p class="detalle-categoria texto-secundario-leyenda mb-2" data-detalle="categoria">Living</p>
+
+                <h2 class="texto-titulo-elegante detalle-nombre" data-detalle="nombre">Aparador Uspallata</h2>
+
+                <!-- El catalogo del curso no define precios. Valor pendiente del issue #S5 (equipo). -->
+                <p class="detalle-precio texto-enfasis-editorial" data-detalle="precio">Precio a confirmar</p>
+
+                <p class="texto-principal detalle-descripcion" data-detalle="descripcion">
+                    Aparador de seis puertas fabricado en nogal sostenible con tiradores metálicos en acabado
+                    latón. Su silueta minimalista realza el veteado natural de la madera, creando una pieza
+                    que combina funcionalidad y elegancia atemporal para espacios contemporáneos.
+                </p>
+
+                <button type="button" class="btn detalle-btn-carrito texto-titulo-cta w-100 mb-3"
+                        data-detalle="btn-carrito">
+                    <i class="fa-solid fa-cart-plus me-2" aria-hidden="true"></i>
+                    Añadir al Carrito
+                </button>
+
+                <p class="texto-secundario-leyenda detalle-envio mb-0">
+                    <i class="fa-solid fa-truck me-1" aria-hidden="true"></i>
+                    Envío sin cargo en CABA y GBA. Entrega estimada: 15 a 20 días hábiles.
+                </p>
+            </div>
+
+            <!-- Especificaciones -->
+            <div class="col-12">
+                <section class="detalle-specs mt-2 mt-lg-4">
+                    <h3 class="texto-titulo-elegante detalle-specs-titulo mb-3">Detalles de fabricación</h3>
+
+                    <div class="table-responsive">
+                        <table class="table detalle-tabla">
+                            <caption class="visually-hidden">
+                                Especificaciones técnicas del Aparador Uspallata
+                            </caption>
+                            <tbody data-detalle="specs">
+                            <tr>
+                                <th scope="row">Medidas</th>
+                                <td>180 &times; 45 &times; 75 cm</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Materiales</th>
+                                <td>Nogal macizo FSC&reg;, herrajes de latón</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Acabado</th>
+                                <td>Aceite natural ecológico</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Peso</th>
+                                <td>68 kg</td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Capacidad</th>
+                                <td>6 compartimentos interiores</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </section>
+            </div>
+
+        </article>
+    </div>
 </main>
 
 <div id="footer-placeholder"></div>
