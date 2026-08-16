@@ -148,6 +148,49 @@ body {
     margin: 0;
 }
 
+.navbar-actions {
+    gap: 0.75rem;
+}
+
+.carrito-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+
+    color: var(--color-primary);
+    text-decoration: none;
+
+    font-family: var(--font-primary), sans-serif;
+    font-weight: var(--font-medium);
+}
+
+.carrito-link:hover {
+    color: var(--color-primary);
+}
+
+.carrito-link:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.carrito-link i {
+    font-size: 1rem;
+}
+
+.cart-count {
+    display: inline-block;
+
+    color: var(--color-primary);
+    font-size: 0.7rem;
+    font-weight: var(--font-medium);
+    letter-spacing: var(--caption-letter-spacing);
+
+    font-family: var(--font-primary), sans-serif;
+
+    line-height: 1;
+}
+
 /* ================= MENÚ HAMBURGUESA ================= */
 button.navbar-toggler {
     border: none;
@@ -279,4 +322,19 @@ button.navbar-toggler:active {
     padding-right: 1rem;
 }
 
+
+@media (max-width: 575.98px) {
+
+    .navbar-hermanos-jota {
+        padding: 1rem;
+    }
+
+    .nombre-marca {
+        display: none;
+    }
+
+    .navbar-brand {
+        margin-right: 0;
+    }
+}
 

@@ -40,6 +40,7 @@ function configureHeaderLinks() {
     const productosLink = document.querySelector('[data-route="productos"]');
     const contactoLink = document.querySelector('[data-route="contacto"]');
     const logoLink = document.querySelector(".navbar-brand");
+    const carritoLinks = document.querySelectorAll('[data-route="carrito"]');
 
     const logo = document.querySelector(".logo");
     logo.src = new URL("assets/logo/logo.svg", projectRoot);
@@ -49,6 +50,9 @@ function configureHeaderLinks() {
     homeLink.href = new URL("index.html", projectRoot);
     productosLink.href = new URL("vistas/productos.html", projectRoot);
     contactoLink.href = new URL("vistas/contacto.html", projectRoot);
+    carritoLinks.forEach((link) => {
+        link.href = new URL("vistas/carrito.html", projectRoot);
+    })
 }
 
 loadHeader();
