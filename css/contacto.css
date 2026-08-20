@@ -44,15 +44,16 @@
     background-color: var(--color-primary);
     border-color: var(--color-primary);
     color: var(--color-background);
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
 .btn-marca-primario:hover,
 .btn-marca-primario:focus,
 .btn-marca-primario:active {
-    background-color: var(--color-suave);
-    border-color: var(--color-suave);
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
     color: var(--color-background);
+    opacity: 0.85;
 }
 
 /* Altura del contenedor del mapa interactivo */
@@ -75,4 +76,15 @@
 /* Filtro sepia para el botón de cierre (X) del modal para que combine con la paleta cálida */
 .btn-close-marca {
     filter: sepia(100%) hue-rotate(-20deg) saturate(300%);
+}
+
+
+/* :hover para links de contacto directo */
+a.texto-marca-primario {
+    transition: opacity 0.2s ease;
+}
+
+a.texto-marca-primario:hover {
+    color: var(--color-primary);
+    opacity: 0.7;
 }
