@@ -46,8 +46,10 @@
                 <div class="col-lg-7">
                     <div class="p-4 p-md-5 rounded-0 border-0 shadow-sm bg-white border-marca-suave">
                         <h3 class="texto-titulo-elegante fs-4 mb-4 texto-marca-primario">Envíanos un mensaje</h3>
+
                         <form id="contactForm" class="needs-validation" novalidate>
                             <div class="row g-3">
+
                                 <!-- Nombre -->
                                 <div class="col-md-6">
                                     <label for="nombre"
@@ -55,10 +57,11 @@
                                         Completo</label>
                                     <input type="text"
                                         class="form-control rounded-0 p-3 bg-light border-0 texto-principal" id="nombre"
-                                        required placeholder="Tu nombre">
+                                        required minlength="3" placeholder="Tu nombre">
                                     <div class="invalid-feedback texto-secundario-leyenda">Por favor, ingresa tu nombre.
                                     </div>
                                 </div>
+
                                 <!-- Email -->
                                 <div class="col-md-6">
                                     <label for="email"
@@ -70,6 +73,7 @@
                                     <div class="invalid-feedback texto-secundario-leyenda">Por favor, ingresa un correo
                                         electrónico válido.</div>
                                 </div>
+
                                 <!-- Teléfono -->
                                 <div class="col-md-6">
                                     <label for="telefono"
@@ -79,6 +83,7 @@
                                         class="form-control rounded-0 p-3 bg-light border-0 texto-principal"
                                         id="telefono" placeholder="Ej: +54 11 1234-5678">
                                 </div>
+
                                 <!-- Motivo de consulta -->
                                 <div class="col-md-6">
                                     <label for="motivo"
@@ -95,16 +100,18 @@
                                     <div class="invalid-feedback texto-secundario-leyenda">Por favor, selecciona un
                                         motivo.</div>
                                 </div>
+
                                 <!-- Mensaje -->
                                 <div class="col-12">
                                     <label for="mensaje"
                                         class="form-label texto-secundario-leyenda text-uppercase texto-marca-primario">Mensaje</label>
                                     <textarea class="form-control rounded-0 p-3 bg-light border-0 texto-principal"
-                                        id="mensaje" rows="5" required
+                                        id="mensaje" rows="5" required minlength="10"
                                         placeholder="Cuéntanos sobre tu proyecto..."></textarea>
                                     <div class="invalid-feedback texto-secundario-leyenda">Por favor, escribe tu
                                         mensaje.</div>
                                 </div>
+
                                 <!-- Submit Button -->
                                 <div class="col-12 mt-4">
                                     <button type="submit"
@@ -113,6 +120,7 @@
                                         Enviar Mensaje
                                     </button>
                                 </div>
+
                             </div>
                         </form>
                     </div>
