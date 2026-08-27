@@ -1,27 +1,39 @@
 <header>
-    <nav class="navbar navbar-expand-lg navbar-hermanos-jota">
+    <nav class="navbar navbar-expand-lg navbar-hermanos-jota" aria-label="Navegación principal">
         <div class="container-fluid">
 
             <!-- Logo & nombre -->
-            <div class="d-flex align-items-center">
-                <a class="navbar-brand" href="#">
-                    <img src="" alt="Logo"
-                         class="logo">
+            <div class="d-flex align-items-center marca-container">
+                <a class="navbar-brand" href="#" aria-label="Hermanos Jota - Inicio">
+                    <img src="" alt="" class="logo">
                 </a>
-                <h1 class="texto-titulo-elegante nombre-marca"> Hermanos Jota </h1>
+                <span class="texto-titulo-elegante nombre-marca"> Hermanos Jota </span>
             </div>
 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+            <!-- Acciones -->
+            <div class="d-flex align-items-center ms-auto d-lg-none navbar-actions">
+                <!-- Carrito Mobile -->
+                <a href="#" class="carrito-link" data-route="carrito" aria-label="Carrito">
+                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                    <span class="cart-count">0</span>
+                </a>
+
+                <!-- Menú hamburguesa -->
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
                 <span class="menu-icon" aria-hidden="true">
                     <span></span>
                     <span></span>
                     <span></span>
                 </span>
-            </button>
+                </button>
+            </div>
+
+
             <!-- Menú -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto align-items-lg-center">
                     <li class="nav-item">
                         <a class="nav-link" data-route="home" href="#">Home</a>
                     </li>
@@ -30,6 +42,18 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-route="contacto" href="#">Contacto</a>
+                    </li>
+
+                    <!-- Carrito Desktop -->
+                    <li class="nav-item d-none d-lg-flex align-items-center ms-lg-3">
+                        <a href="#" class="carrito-link" data-route="carrito" aria-label="Carrito, 0 productos">
+
+                            <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+
+                            <span class="cart-count">
+                                0
+                            </span>
+                        </a>
                     </li>
                 </ul>
             </div>
