@@ -111,6 +111,8 @@ body {
     width: var(--logo-min-width-digital);
     height: auto;
     display: block;
+
+    transform: translateX(-1.6rem);
 }
 
 .logo-primary {
@@ -125,7 +127,7 @@ body {
 .navbar-hermanos-jota {
     background-color: var(--color-background);
     border-bottom: 1px solid rgba(160, 82, 45, 0.18);
-    padding: 1.25rem 2rem;
+    padding-block: 1.25rem;
 }
 
 .navbar .nav-link {
