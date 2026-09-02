@@ -1,5 +1,5 @@
 import {productos} from "./productos.js";
-// import {agregarAlCarrito} from "./carrito.js";
+import {agregarAlCarrito} from "./carrito.js";
 
 // Obtiene el ID del producto desde la URL => producto.html?id=1
 const params = new URLSearchParams(window.location.search);
@@ -77,9 +77,11 @@ function renderizarEspecificaciones(contenedor, producto) {
 
 // Carrito
 const btnCarrito = document.querySelector('[data-detalle="btn-carrito"]');
-btnCarrito.addEventListener('click', () => {
-    agregarAlCarrito(producto.id);
-});
+if (btnCarrito) {
+    btnCarrito.addEventListener('click', () => {
+        agregarAlCarrito(producto.id);
+    });
+}
 
 // Caso: producto inexistente => estado de error cuando el ID no corresponde a ningún producto
 function renderizarProductoNoEncontrado() {
