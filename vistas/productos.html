@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Productos</title>
+    <title>Productos - Hermanos Jota</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
@@ -15,16 +15,55 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/productos.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
 
 <div id="header-placeholder"></div>
 
 <main class="flex-grow-1">
-    <!-- TODO: solo se encuentran los header y footer realizados.
-                Quedaría pendiente el contenido específico de la vista en cuestión.
-     -->
-    <h1>VISTA DESDE PRODUCTOS</h1>
+    <section class="productos-section">
+        <div class="container">
+            <div class="productos-header mb-4">
+                <p class="home-eyebrow texto-titulo-cta mb-2">Colección</p>
+                <h1 class="texto-titulo-elegante display-5 mb-3">Catálogo de Productos</h1>
+                <p class="texto-principal">Explorá nuestra selección exclusiva de mobiliario y objetos de diseño.</p>
+            </div>
+
+            <div class="productos-filtros row g-3 align-items-center mb-5">
+                <div class="col-12 col-md-7 col-lg-8">
+                    <div class="input-group">
+                        <span class="input-group-text border-end-0"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <input type="search" id="input-busqueda" class="form-control border-start-0" placeholder="Buscar por nombre o descripción...">
+                    </div>
+                </div>
+                <div class="col-12 col-md-5 col-lg-4">
+                    <select id="select-categoria" class="form-select" aria-label="Filtrar por categoría">
+                        <option value="todos">Todas las categorías</option>
+                        <option value="living">Living</option>
+                        <option value="comedor">Comedor</option>
+                        <option value="dormitorio">Dormitorio</option>
+                        <option value="oficina">Oficina</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="spinner-carga" class="text-center my-5 d-none">
+                <div class="spinner-border" role="status">
+                    <span class="visually-hidden">Cargando productos...</span>
+                </div>
+            </div>
+
+            <div id="sin-resultados" class="text-center my-5 d-none">
+                <i class="fa-solid fa-box-open fa-3x mb-3 text-muted"></i>
+                <h3 class="texto-titulo-elegante h4 mb-2">No se encontraron productos</h3>
+                <p class="texto-principal text-muted">Intenta cambiar los términos de búsqueda o los filtros aplicados.</p>
+            </div>
+
+            <div id="contenedor-productos" class="row g-4">
+            </div>
+        </div>
+    </section>
 </main>
 
 <div id="footer-placeholder"></div>
