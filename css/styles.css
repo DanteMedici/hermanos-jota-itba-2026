@@ -116,11 +116,11 @@ body {
 }
 
 .logo-primary {
-    /* TODO: Chequear cómo se maneja el tema de los colores en extensiones .svg */
+    color: var(--color-primary); /* Fondos claros */
 }
 
 .logo-inverted {
-    /* TODO */
+    color: var(--color-background); /* Fondos oscuros */
 }
 
 /* ================= NAVBAR ================= */
