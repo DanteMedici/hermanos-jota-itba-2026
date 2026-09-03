@@ -86,5 +86,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   } catch (error) {
     spinner.classList.add("d-none");
     console.error(error);
+
+    sinResultados.classList.remove("d-none");
+    sinResultados.querySelector("h3").textContent = "No se pudieron cargar los productos";
+    sinResultados.querySelector("p").textContent = "Ocurrió un error al cargar el catálogo. Por favor, intentá nuevamente.";
   }
 });
