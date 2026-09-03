@@ -74,23 +74,26 @@ function renderizarCarrito() {
         totalGeneral += subtotal;
 
         resumenHtml += `
-            <div class="carrito-resumen-fila">
-                <span class="carrito-resumen-producto">
+            <tr class="carrito-resumen-fila">
+                <th
+                    scope="row"
+                    class="carrito-resumen-producto"
+                >
                     ${productoCatalogo.nombre}
-                </span>
+                </th>
         
-                <span>
+                <td>
                     ${item.cantidad}
-                </span>
+                </td>
         
-                <span>
+                <td>
                     $${productoCatalogo.precio.toLocaleString("es-AR")}
-                </span>
+                </td>
         
-                <span class="carrito-resumen-subtotal">
+                <td class="carrito-resumen-subtotal">
                     $${subtotal.toLocaleString("es-AR")}
-                </span>
-            </div>
+                </td>
+            </tr>
         `;
 
         html += `
@@ -191,15 +194,21 @@ function renderizarCarrito() {
                     Resumen de tu selección
                 </h2>
     
-                <div class="carrito-resumen-encabezado">
-                    <span>Producto</span>
-                    <span>Cantidad</span>
-                    <span>Precio unitario</span>
-                    <span>Subtotal</span>
-                </div>
-    
-                <div class="carrito-resumen-tabla">
-                    ${resumenHtml}
+                <div class="carrito-resumen-scroll">
+                    <table class="carrito-resumen-tabla">
+                        <thead>
+                            <tr class="carrito-resumen-encabezado">
+                                <th scope="col">Producto</th>
+                                <th scope="col">Cantidad</th>
+                                <th scope="col">Precio unitario</th>
+                                <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                    
+                        <tbody>
+                            ${resumenHtml}
+                        </tbody>
+                    </table>
                 </div>
     
                 <div class="carrito-resumen-total">
