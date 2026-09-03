@@ -27,9 +27,13 @@ document.addEventListener("DOMContentLoaded", async () => {
           <div class="producto-card-content">
             <span class="producto-card-categoria texto-secundario-leyenda">${producto.categoria}</span>
             <h3 class="producto-card-nombre texto-enfasis-editorial">${producto.nombre}</h3>
+            <span class="producto-card-precio">${
+              producto.precio > 0
+                ? `$${producto.precio.toLocaleString("es-AR")}`
+                : "Precio a confirmar"
+            }</span>
             <span class="producto-card-link texto-titulo-cta">Ver pieza <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
           </div>
-        </a>
       </article>
     `;
   }
