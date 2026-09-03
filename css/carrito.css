@@ -43,6 +43,11 @@
     color: var(--color-primary);
 }
 
+.carrito-vacio .texto-titulo-elegante {
+    color: var(--color-text-titles);
+    font-size: 2rem;
+}
+
 .carrito-vacio h1,
 .carrito-vacio h2 {
     color: var(--color-text-titles);
@@ -290,10 +295,6 @@
     }
 
     /* Estilos para Resumen */
-    .carrito-resumen {
-        overflow-x: auto;
-    }
-
     .carrito-resumen-tabla {
         min-width: 620px;
     }

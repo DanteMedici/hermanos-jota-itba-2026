@@ -2,13 +2,24 @@ import {actualizarCantidad, eliminarDelCarrito, obtenerCarrito} from "./carrito.
 import {productos} from "./productos.js";
 
 const contenedorCarrito = document.getElementById("carrito-container");
+const carritoStatus = document.getElementById("carrito-status");
 
 const modalEliminarElement = document.getElementById("modalEliminarProducto");
 const btnConfirmarEliminar = document.getElementById("confirmar-eliminar-producto");
 
 let productoPendienteDeEliminar = null;
 
-function renderizarCarrito() {
+function anunciarCambio(mensaje) {
+    if (!carritoStatus) return;
+
+    carritoStatus.textContent = "";
+
+    requestAnimationFrame(() => {
+        carritoStatus.textContent = mensaje;
+    });
+}
+
+function renderizarCarrito(foco = null) {
     if (!contenedorCarrito) return;
 
     const itemsCarrito = obtenerCarrito();
@@ -25,9 +36,9 @@ function renderizarCarrito() {
                     <i class="fa-solid fa-couch fa-3x"></i>
                 </span>
 
-                <h2 class="texto-titulo-elegante">
+                <h1 class="texto-titulo-elegante">
                     Tu selección aún está vacía
-                </h2>
+                </h1>
 
                 <p class="texto-principal">
                     Redescubre el arte de vivir. Aún no has seleccionado
@@ -44,6 +55,13 @@ function renderizarCarrito() {
 
             </div>
         `;
+
+        if (foco?.action === "empty") {
+            contenedorCarrito
+                .querySelector(".btn-carrito-explorar")
+                ?.focus();
+        }
+
         return;
     }
 
@@ -113,7 +131,10 @@ function renderizarCarrito() {
 
                 <div class="carrito-item-info">
                     <h2 class="carrito-item-nombre">
-                        <a href="producto.html?id=${productoCatalogo.id}">
+                        <a href="producto.html?id=${productoCatalogo.id}"
+                           data-id="${productoCatalogo.id}"
+                           data-action="product"
+                        >
                             ${productoCatalogo.nombre}
                         </a>
                     </h2>
@@ -127,6 +148,7 @@ function renderizarCarrito() {
 
                     <div
                         class="carrito-cantidad"
+                        role="group"
                         aria-label="Cantidad de ${productoCatalogo.nombre}"
                     >
 
@@ -144,10 +166,7 @@ function renderizarCarrito() {
                             ></i>
                         </button>
 
-                        <span
-                            class="carrito-cantidad-valor"
-                            aria-live="polite"
-                        >
+                        <span class="carrito-cantidad-valor" >
                             ${item.cantidad}
                         </span>
 
@@ -226,6 +245,14 @@ function renderizarCarrito() {
 
     // Asignar event listeners
     asignarEventos();
+
+    if (foco) {
+        const elemento = contenedorCarrito.querySelector(
+            `[data-id="${foco.id}"][data-action="${foco.action}"]`
+        );
+
+        elemento?.focus();
+    }
 }
 
 function asignarEventos() {
@@ -237,9 +264,19 @@ function asignarEventos() {
         btn.addEventListener("click", (e) => {
             const id = Number(e.currentTarget.getAttribute("data-id"));
             const item = obtenerCarrito().find(i => i.id === id);
+            const producto = productos.find(p => p.id === id);
+
             if (item && item.cantidad > 1) {
-                actualizarCantidad(id, item.cantidad - 1);
-                renderizarCarrito();
+                const nuevaCantidad = item.cantidad - 1;
+
+                actualizarCantidad(id, nuevaCantidad);
+                renderizarCarrito({id, action: "decrease"});
+
+                if (producto) {
+                    anunciarCambio(
+                        `Cantidad de ${producto.nombre} actualizada a ${nuevaCantidad}`
+                    );
+                }
             }
         });
     });
@@ -248,9 +285,19 @@ function asignarEventos() {
         btn.addEventListener("click", (e) => {
             const id = Number(e.currentTarget.getAttribute("data-id"));
             const item = obtenerCarrito().find(i => i.id === id);
+            const producto = productos.find(p => p.id === id);
+
             if (item) {
-                actualizarCantidad(id, item.cantidad + 1);
-                renderizarCarrito();
+                const nuevaCantidad = item.cantidad + 1;
+
+                actualizarCantidad(id, nuevaCantidad);
+                renderizarCarrito({id, action: "increase"});
+
+                if (producto) {
+                    anunciarCambio(
+                        `Cantidad de ${producto.nombre} actualizada a ${nuevaCantidad}`
+                    );
+                }
             }
         });
     });
@@ -282,7 +329,19 @@ btnConfirmarEliminar?.addEventListener("click", () => {
         return;
     }
 
+    const itemsAntesDeEliminar = obtenerCarrito();
+
+    const indiceEliminado = itemsAntesDeEliminar.findIndex(
+        item => item.id === productoPendienteDeEliminar
+    );
+
+    const productoEliminado = productos.find(
+        p => p.id === productoPendienteDeEliminar
+    );
+
     eliminarDelCarrito(productoPendienteDeEliminar);
+
+    const itemsRestantes = obtenerCarrito();
 
     productoPendienteDeEliminar = null;
 
@@ -292,7 +351,31 @@ btnConfirmarEliminar?.addEventListener("click", () => {
 
     modal?.hide();
 
-    renderizarCarrito();
+    let foco;
+
+    if (itemsRestantes.length > 0) {
+        const nuevoIndice = Math.min(
+            indiceEliminado,
+            itemsRestantes.length - 1
+        );
+
+        foco = {
+            id: itemsRestantes[nuevoIndice].id,
+            action: "product"
+        };
+    } else {
+        foco = {
+            action: "empty"
+        };
+    }
+
+    renderizarCarrito(foco);
+
+    if (productoEliminado) {
+        anunciarCambio(
+            `${productoEliminado.nombre} fue eliminado del carrito`
+        );
+    }
 });
 
 
