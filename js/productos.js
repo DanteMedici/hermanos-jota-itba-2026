@@ -196,12 +196,10 @@ export const productos = [
 
 export function obtenerProductos() {
     return new Promise((resolve, reject) => {
+        const delay = Math.floor(Math.random() * 401) + 400; // 400-800 ms
+
         setTimeout(() => {
-            try {
-                resolve(productos);
-            } catch (error) {
-                reject("Error al obtener los productos del catálogo: " + error);
-            }
-        }, 500);
+            resolve(productos);
+        }, delay);
     });
 }
