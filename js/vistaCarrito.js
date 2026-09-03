@@ -1,7 +1,12 @@
-import { obtenerCarrito, actualizarCantidad, eliminarDelCarrito } from "./carrito.js";
-import { productos } from "./productos.js";
+import {actualizarCantidad, eliminarDelCarrito, obtenerCarrito} from "./carrito.js";
+import {productos} from "./productos.js";
 
 const contenedorCarrito = document.getElementById("carrito-container");
+
+const modalEliminarElement = document.getElementById("modalEliminarProducto");
+const btnConfirmarEliminar = document.getElementById("confirmar-eliminar-producto");
+
+let productoPendienteDeEliminar = null;
 
 function renderizarCarrito() {
     if (!contenedorCarrito) return;
@@ -11,15 +16,32 @@ function renderizarCarrito() {
     // Estado vacío
     if (itemsCarrito.length === 0) {
         contenedorCarrito.innerHTML = `
-            <div class="text-center py-5 my-5">
-                <span class="fs-1 mb-4 d-block texto-marca-primario"><i class="fa-solid fa-couch"></i></span>
-                <h2 class="texto-titulo-elegante mb-3 texto-marca-primario">Tu selección aún está vacía</h2>
-                <p class="texto-principal mb-4 opacity-75 col-md-8 mx-auto">
-                    Redescubre el arte de vivir. Aún no has seleccionado ninguna pieza para tu hogar, pero nuestra colección te está esperando con muebles diseñados para perdurar.
+            <div class="carrito-vacio">
+
+                <span
+                    class="carrito-vacio-icono"
+                    aria-hidden="true"
+                >
+                    <i class="fa-solid fa-couch fa-3x"></i>
+                </span>
+
+                <h2 class="texto-titulo-elegante">
+                    Tu selección aún está vacía
+                </h2>
+
+                <p class="texto-principal">
+                    Redescubre el arte de vivir. Aún no has seleccionado
+                    ninguna pieza para tu hogar, pero nuestra colección te está
+                    esperando con muebles diseñados para perdurar.
                 </p>
-                <a href="productos.html" class="btn texto-titulo-cta py-3 px-5 border-0 rounded-0 btn-marca-primario">
+
+                <a
+                    href="productos.html"
+                    class="btn-carrito-explorar texto-titulo-cta"
+                >
                     Explorar colección
                 </a>
+
             </div>
         `;
         return;
@@ -27,10 +49,16 @@ function renderizarCarrito() {
 
     // Estado con productos
     let html = `
-        <div class="row mb-4">
-            <div class="col-12">
-                <h2 class="texto-titulo-elegante mb-4 texto-marca-primario">Tu Carrito</h2>
-                <ul class="list-unstyled">
+        <section class="carrito-section" aria-labelledby="carrito-titulo">
+
+            <h1
+                id="carrito-titulo"
+                class="carrito-titulo"
+            >
+                Tu carrito
+            </h1>
+
+            <ul class="list-unstyled m-0">
     `;
 
     itemsCarrito.forEach((item) => {
@@ -38,34 +66,97 @@ function renderizarCarrito() {
         if (!productoCatalogo) return;
 
         html += `
-            <li class="carrito-item py-3 d-flex flex-column flex-sm-row align-items-sm-center gap-3">
-                <img src="../${productoCatalogo.imagen}" alt="${productoCatalogo.nombre}" class="carrito-item-img">
-                <div class="flex-grow-1">
-                    <h3 class="texto-enfasis-subtitulo mb-1 texto-marca-primario fs-5">${productoCatalogo.nombre}</h3>
-                    <p class="texto-secundario-leyenda mb-0 opacity-75">Precio a confirmar</p>
+            <li class="carrito-item">
+
+                <a
+                    href="producto.html?id=${productoCatalogo.id}"
+                    class="carrito-item-imagen-link"
+                    aria-label="Ver ${productoCatalogo.nombre}"
+                >
+                    <img
+                        src="../${productoCatalogo.imagen}"
+                        alt="${productoCatalogo.nombre}"
+                        class="carrito-item-img"
+                    >
+                </a>
+
+                <div class="carrito-item-info">
+                    <h2 class="carrito-item-nombre">
+                        <a href="producto.html?id=${productoCatalogo.id}">
+                            ${productoCatalogo.nombre}
+                        </a>
+                    </h2>
+                
+                    <p class="carrito-item-precio">
+                        Precio a confirmar
+                    </p>
                 </div>
-                <div class="d-flex align-items-center justify-content-between mt-3 mt-sm-0 gap-3">
-                    <div class="carrito-controles-cantidad d-flex align-items-center bg-white border border-secondary border-opacity-25 rounded-1 p-1">
-                        <button class="btn btn-cantidad p-1 border-0 d-flex align-items-center justify-content-center" data-id="${productoCatalogo.id}" data-action="decrease" ${item.cantidad <= 1 ? 'disabled' : ''} aria-label="Disminuir cantidad">
-                            <i class="fa-solid fa-minus fs-6"></i>
+
+                <div class="carrito-item-actions">
+
+                    <div
+                        class="carrito-cantidad"
+                        aria-label="Cantidad de ${productoCatalogo.nombre}"
+                    >
+
+                        <button
+                            type="button"
+                            class="btn-cantidad"
+                            data-id="${productoCatalogo.id}"
+                            data-action="decrease"
+                            ${item.cantidad <= 1 ? "disabled" : ""}
+                            aria-label="Disminuir cantidad de ${productoCatalogo.nombre}"
+                        >
+                            <i
+                                class="fa-solid fa-minus"
+                                aria-hidden="true"
+                            ></i>
                         </button>
-                        <span class="mx-3 fw-medium texto-principal fs-6">${item.cantidad}</span>
-                        <button class="btn btn-cantidad p-1 border-0 d-flex align-items-center justify-content-center" data-id="${productoCatalogo.id}" data-action="increase" aria-label="Aumentar cantidad">
-                            <i class="fa-solid fa-plus fs-6"></i>
+
+                        <span
+                            class="carrito-cantidad-valor"
+                            aria-live="polite"
+                        >
+                            ${item.cantidad}
+                        </span>
+
+                        <button
+                            type="button"
+                            class="btn-cantidad"
+                            data-id="${productoCatalogo.id}"
+                            data-action="increase"
+                            aria-label="Aumentar cantidad de ${productoCatalogo.nombre}"
+                        >
+                            <i
+                                class="fa-solid fa-plus"
+                                aria-hidden="true"
+                            ></i>
                         </button>
+
                     </div>
-                    <button class="btn btn-link text-danger p-2 text-decoration-none d-flex align-items-center justify-content-center" data-id="${productoCatalogo.id}" data-action="delete" aria-label="Eliminar ${productoCatalogo.nombre}">
-                        <i class="fa-regular fa-trash-can fs-5"></i>
+
+                    <button
+                        type="button"
+                        class="btn-eliminar-carrito"
+                        data-id="${productoCatalogo.id}"
+                        data-action="delete"
+                        aria-label="Eliminar ${productoCatalogo.nombre} del carrito"
+                    >
+                        <i
+                            class="fa-regular fa-trash-can"
+                            aria-hidden="true"
+                        ></i>
                     </button>
+
                 </div>
+
             </li>
         `;
     });
 
     html += `
-                </ul>
-            </div>
-        </div>
+            </ul>
+        </section>
     `;
 
     contenedorCarrito.innerHTML = html;
@@ -104,10 +195,49 @@ function asignarEventos() {
     btnDelete.forEach(btn => {
         btn.addEventListener("click", (e) => {
             const id = Number(e.currentTarget.getAttribute("data-id"));
-            eliminarDelCarrito(id);
-            renderizarCarrito();
+            solicitarEliminacion(id);
         });
     });
 }
+
+// Confirmación de eliminación
+function solicitarEliminacion(id) {
+    productoPendienteDeEliminar = id;
+
+    if (!modalEliminarElement) return;
+
+    const modal = bootstrap.Modal.getOrCreateInstance(
+        modalEliminarElement
+    );
+
+    modal.show();
+}
+
+
+btnConfirmarEliminar?.addEventListener("click", () => {
+    if (productoPendienteDeEliminar === null) {
+        return;
+    }
+
+    eliminarDelCarrito(productoPendienteDeEliminar);
+
+    productoPendienteDeEliminar = null;
+
+    const modal = bootstrap.Modal.getInstance(
+        modalEliminarElement
+    );
+
+    modal?.hide();
+
+    renderizarCarrito();
+});
+
+
+modalEliminarElement?.addEventListener(
+    "hidden.bs.modal",
+    () => {
+        productoPendienteDeEliminar = null;
+    }
+);
 
 renderizarCarrito();
