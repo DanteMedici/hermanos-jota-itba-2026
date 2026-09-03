@@ -21,6 +21,23 @@
     /* ===== Detalles femeninos / acentos suaves ===== */
     --color-suave: #C47A6D;
 
+    /* ===== Neutros ===== */
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-dark-gray: #333333;
+    --color-gray: #666666;
+    --color-light-gray: #999999;
+
+    /* ===== Sombras ===== */
+    --shadow-strong: rgba(0, 0, 0, 0.25);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-soft: rgba(0, 0, 0, 0.08);
+
+    /* ===== Bordes ===== */
+    --border-strong: rgba(160, 82, 45, 0.25);
+    --border-medium: rgba(160, 82, 45, 0.2);
+    --border-soft: rgba(160, 82, 45, 0.15);
+    --border-light: rgba(160, 82, 45, 0.08);
     /* ===== Tipografías ===== */
     --font-primary: 'Inter', sans-serif;
     --font-editorial: 'Playfair Display', Georgia, serif;
@@ -97,7 +114,6 @@ body {
 .texto-titulo-elegante {
     font-family: var(--font-editorial), Georgia, serif;
     font-weight: var(--font-regular);
-
     text-transform: uppercase;
     letter-spacing: var(--title-letter-spacing);
 }
@@ -126,7 +142,7 @@ body {
 /* ================= NAVBAR ================= */
 .navbar-hermanos-jota {
     background-color: var(--color-background);
-    border-bottom: 1px solid rgba(160, 82, 45, 0.18);
+    border-bottom: 1px solid var(--border-medium);
     padding-block: 1.25rem;
 }
 
@@ -339,98 +355,3 @@ button.navbar-toggler:active {
         margin-right: 0;
     }
 }
-
-/* ================= COMPONENTE: TARJETA DE PRODUCTO (#23) =================
-   Componente reutilizable para la presentación de productos en Home y Catálogo.
-   Incluye estados de hover, focus, formato de imagen, tipografía y llamadas a la acción.
-   ========================================================================== */
-
-.producto-card {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    background-color: #FFFFFF;
-    border: 1px solid rgba(160, 82, 45, 0.12);
-    text-decoration: none;
-    color: inherit;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    overflow: hidden;
-}
-
-.producto-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
-    border-color: var(--color-primary);
-    color: inherit;
-}
-
-.producto-card:focus-visible {
-    outline: 2px solid var(--color-primary);
-    outline-offset: 4px;
-}
-
-.producto-card-figure {
-    margin: 0;
-    aspect-ratio: 4 / 3;
-    overflow: hidden;
-    background-color: var(--color-background);
-}
-
-.producto-card-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.35s ease;
-}
-
-.producto-card:hover .producto-card-image {
-    transform: scale(1.04);
-}
-
-.producto-card-content {
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
-    padding: 1.25rem;
-}
-
-.producto-card-categoria {
-    color: var(--color-primary);
-    margin-bottom: 0.35rem;
-    text-transform: uppercase;
-}
-
-.producto-card-nombre {
-    color: var(--color-text-titles);
-    font-size: 1.2rem;
-    margin-bottom: 0.5rem;
-}
-
-.producto-card-precio {
-    font-family: var(--font-primary), sans-serif;
-    font-weight: var(--font-bold);
-    color: var(--color-primary);
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-.producto-card-link {
-    margin-top: auto;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--color-primary);
-    font-size: 0.85rem;
-    font-weight: var(--font-medium);
-    text-transform: uppercase;
-}
-
-.producto-card-link i {
-    transition: transform 0.2s ease;
-}
-
-.producto-card:hover .producto-card-link i {
-    transform: translateX(4px);
-}
-
-

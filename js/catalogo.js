@@ -1,94 +1,86 @@
 import { obtenerProductos } from "./productos.js";
+import { productCard } from "../components/product-card/product-card.js";
 
-document.addEventListener("DOMContentLoaded", async () => {
-  const spinner = document.getElementById("spinner-carga");
-  const sinResultados = document.getElementById("sin-resultados");
-  const contenedor = document.getElementById("contenedor-productos");
-  const inputBusqueda = document.getElementById("input-busqueda");
-  const selectCategoria = document.getElementById("select-categoria");
+const spinner = document.getElementById("spinner-carga");
+const sinResultados = document.getElementById("sin-resultados");
+const contenedor = document.getElementById("contenedor-productos");
+const inputBusqueda = document.getElementById("input-busqueda");
+const selectCategoria = document.getElementById("select-categoria");
 
-  let productosOriginales = [];
+let productosOriginales = [];
 
-  function normalizarTexto(texto) {
-    return texto
-      .normalize("NFD")
-      .replace(/[\u0300-\u036f]/g, "")
-      .toLowerCase()
-      .trim();
+function normalizarTexto(texto) {
+  return texto
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .trim();
+}
+
+function renderizarProductos(productos) {
+  contenedor.innerHTML = "";
+
+  if (productos.length === 0) {
+    sinResultados.classList.remove("d-none");
+    anunciarResultados("No se encontraron productos");
+    return;
   }
 
-  function crearTarjetaHTML(producto) {
-    return `
-      <article class="col-12 col-sm-6 col-lg-4">
-        <a href="./producto.html?id=${producto.id}" class="producto-card" aria-label="Ver detalle de ${producto.nombre}">
-          <figure class="producto-card-figure">
-            <img src="../${producto.imagen}" alt="${producto.nombre}" class="producto-card-image" loading="lazy">
-          </figure>
-          <div class="producto-card-content">
-            <span class="producto-card-categoria texto-secundario-leyenda">${producto.categoria}</span>
-            <h3 class="producto-card-nombre texto-enfasis-editorial">${producto.nombre}</h3>
-            <span class="producto-card-precio">${
-              producto.precio > 0
-                ? `$${producto.precio.toLocaleString("es-AR")}`
-                : "Precio a confirmar"
-            }</span>
-            <span class="producto-card-link texto-titulo-cta">Ver pieza <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
-          </div>
-      </article>
-    `;
+  sinResultados.classList.add("d-none");
+  contenedor.innerHTML = productos.map(productCard).join("");
+  anunciarResultados(`Se encontraron ${productos.length} producto${productos.length !== 1 ? 's' : ''}`);
+}
+
+function anunciarResultados(mensaje) {
+  const anuncio = document.getElementById("anuncio-resultados");
+  anuncio.textContent = mensaje;
+}
+
+function aplicarFiltros() {
+  const textoBusqueda = normalizarTexto(inputBusqueda.value);
+  const categoriaSeleccionada = selectCategoria.value;
+
+  let regexBusqueda;
+  try {
+    regexBusqueda = new RegExp(`\\b${textoBusqueda}`, 'i');
+  } catch (error) {
+    regexBusqueda = null;
   }
+  // El try/catch está para evitar errores por expresiones que no sean válidas para el regex, como un asterisco al principio.
 
-  function renderizarProductos(productos) {
-    contenedor.innerHTML = "";
+  const productosFiltrados = productosOriginales.filter((producto) => {
+    const coincideCategoria =
+      categoriaSeleccionada === "todos" ||
+      producto.categoria === categoriaSeleccionada;
 
-    if (productos.length === 0) {
-      sinResultados.classList.remove("d-none");
-      return;
+    let coincideBusqueda = true;
+    if (textoBusqueda !== "") {
+      const nombreNormalizado = normalizarTexto(producto.nombre);
+      if (regexBusqueda) {
+        coincideBusqueda = regexBusqueda.test(nombreNormalizado);
+      } else {
+        coincideBusqueda = nombreNormalizado.includes(textoBusqueda);
+      }
     }
 
-    sinResultados.classList.add("d-none");
-    contenedor.innerHTML = productos.map(crearTarjetaHTML).join("");
-  }
+    return coincideCategoria && coincideBusqueda;
+  });
 
-  function aplicarFiltros() {
-    const textoBusqueda = normalizarTexto(inputBusqueda.value);
-    const categoriaSeleccionada = selectCategoria.value;
+  renderizarProductos(productosFiltrados);
+}
 
-    const productosFiltrados = productosOriginales.filter((producto) => {
-      const coincideCategoria =
-        categoriaSeleccionada === "todos" ||
-        producto.categoria === categoriaSeleccionada;
-
-      const nombreNormalizado = normalizarTexto(producto.nombre);
-      const descripcionNormalizada = normalizarTexto(producto.descripcion);
-      const coincideBusqueda =
-        textoBusqueda === "" ||
-        nombreNormalizado.includes(textoBusqueda) ||
-        descripcionNormalizada.includes(textoBusqueda);
-
-      return coincideCategoria && coincideBusqueda;
-    });
-
-    renderizarProductos(productosFiltrados);
-  }
-
-  try {
-    spinner.classList.remove("d-none");
-    contenedor.innerHTML = "";
-
-    productosOriginales = await obtenerProductos();
-
-    spinner.classList.add("d-none");
-    renderizarProductos(productosOriginales);
-
-    inputBusqueda.addEventListener("input", aplicarFiltros);
-    selectCategoria.addEventListener("change", aplicarFiltros);
-  } catch (error) {
-    spinner.classList.add("d-none");
-    console.error(error);
-
-    sinResultados.classList.remove("d-none");
-    sinResultados.querySelector("h3").textContent = "No se pudieron cargar los productos";
-    sinResultados.querySelector("p").textContent = "Ocurrió un error al cargar el catálogo. Por favor, intentá nuevamente.";
-  }
-});
+try {
+  spinner.classList.remove("d-none");
+  contenedor.innerHTML = "";
+  productosOriginales = await obtenerProductos();
+  spinner.classList.add("d-none");
+  renderizarProductos(productosOriginales);
+  inputBusqueda.addEventListener("input", aplicarFiltros);
+  selectCategoria.addEventListener("change", aplicarFiltros);
+} catch (error) {
+  spinner.classList.add("d-none");
+  console.error(error);
+  sinResultados.classList.remove("d-none");
+  sinResultados.querySelector("h3").textContent = "No se pudieron cargar los productos";
+  sinResultados.querySelector("p").textContent = "Ocurrió un error al cargar el catálogo. Por favor, intentá nuevamente.";
+}

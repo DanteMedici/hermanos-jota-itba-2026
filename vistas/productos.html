@@ -3,12 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Productos - Hermanos Jota</title>
+    <meta name="description" content="Explorá el catálogo exclusivo de muebles y objetos de diseño sustentable de Hermanos Jota.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
     <!-- Fontawesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
@@ -16,6 +17,9 @@
     <!-- CSS -->
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/productos.css">
+
+    <!-- Componente de tarjeta de producto -->
+    <link rel="stylesheet" href="../components/product-card/product-card.css">
 </head>
 <body class="d-flex flex-column min-vh-100">
 
@@ -34,7 +38,7 @@
                 <div class="col-12 col-md-7 col-lg-8">
                     <div class="input-group">
                         <span class="input-group-text border-end-0"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i></span>
-                        <input type="search" id="input-busqueda" class="form-control border-start-0" placeholder="Buscar por nombre o descripción..." aria-label="Buscar productos">
+                        <input type="search" id="input-busqueda" class="form-control border-start-0" placeholder="Buscar por nombre..." aria-label="Buscar productos">
                     </div>
                 </div>
                 <div class="col-12 col-md-5 col-lg-4">
@@ -60,6 +64,7 @@
                 <p class="texto-principal text-muted">Intenta cambiar los términos de búsqueda o los filtros aplicados.</p>
             </div>
 
+            <div id="anuncio-resultados" class="visually-hidden" aria-live="polite" aria-atomic="true"></div>
             <div id="contenedor-productos" class="row g-4"></div>
             
         </div>
