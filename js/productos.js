@@ -193,3 +193,15 @@ export const productos = [
         }
     }
 ];
+
+export function obtenerProductos() {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            try {
+                resolve(productos);
+            } catch (error) {
+                reject("Error al obtener los productos del catálogo: " + error);
+            }
+        }, 500);
+    });
+}
