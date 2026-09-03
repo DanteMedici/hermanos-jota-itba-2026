@@ -21,6 +21,23 @@
     /* ===== Detalles femeninos / acentos suaves ===== */
     --color-suave: #C47A6D;
 
+    /* ===== Neutros ===== */
+    --color-white: #FFFFFF;
+    --color-black: #000000;
+    --color-dark-gray: #333333;
+    --color-gray: #666666;
+    --color-light-gray: #999999;
+
+    /* ===== Sombras ===== */
+    --shadow-strong: rgba(0, 0, 0, 0.25);
+    --shadow-medium: rgba(0, 0, 0, 0.15);
+    --shadow-soft: rgba(0, 0, 0, 0.08);
+
+    /* ===== Bordes ===== */
+    --border-strong: rgba(160, 82, 45, 0.25);
+    --border-medium: rgba(160, 82, 45, 0.2);
+    --border-soft: rgba(160, 82, 45, 0.15);
+    --border-light: rgba(160, 82, 45, 0.08);
     /* ===== Tipografías ===== */
     --font-primary: 'Inter', sans-serif;
     --font-editorial: 'Playfair Display', Georgia, serif;
@@ -97,7 +114,6 @@ body {
 .texto-titulo-elegante {
     font-family: var(--font-editorial), Georgia, serif;
     font-weight: var(--font-regular);
-
     text-transform: uppercase;
     letter-spacing: var(--title-letter-spacing);
 }
@@ -126,7 +142,7 @@ body {
 /* ================= NAVBAR ================= */
 .navbar-hermanos-jota {
     background-color: var(--color-background);
-    border-bottom: 1px solid rgba(160, 82, 45, 0.18);
+    border-bottom: 1px solid var(--border-medium);
     padding-block: 1.25rem;
 }
 
@@ -339,4 +355,3 @@ button.navbar-toggler:active {
         margin-right: 0;
     }
 }
-

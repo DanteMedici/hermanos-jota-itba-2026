@@ -1,0 +1,107 @@
+/* ================= COMPONENTE: TARJETA DE PRODUCTO (#23) =================
+Componente reutilizable para la presentación de productos en Home y Catálogo.
+Incluye estados de hover, focus, formato de imagen, tipografía y llamadas a la acción.
+========================================================================== */
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background-color: var(--color-white);
+    border: 1px solid var(--border-soft);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px var(--shadow-soft);
+    border-color: var(--color-primary);
+    color: inherit;
+}
+
+.product-card:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+}
+
+.product-card-figure {
+    margin: 0;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background-color: var(--color-background);
+}
+
+.product-card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.35s ease;
+}
+
+.product-card:hover .product-card-image {
+    transform: scale(1.04);
+}
+
+.product-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding: 1.25rem;
+}
+
+.product-card-categoria {
+    color: var(--color-primary);
+    margin-bottom: 0.35rem;
+    text-transform: uppercase;
+}
+
+.product-card-nombre {
+    color: var(--color-text-titles);
+    font-size: 1.1rem;
+    font-weight: var(--font-bold);
+    margin-bottom: 0.5rem;
+}
+
+.product-card-precio {
+    font-family: var(--font-primary), sans-serif;
+    font-weight: var(--font-medium);
+    color: var(--color-primary);
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+.product-card-link {
+    margin-top: auto;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-size: 0.85rem;
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.product-card-link i {
+    transition: transform 0.2s ease;
+}
+
+.product-card-link::after  {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+}
+
+.product-card:hover .product-card-link i {
+    transform: translateX(4px);
+}
+
+.product-card:hover .product-card-link span {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
