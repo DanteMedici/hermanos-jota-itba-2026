@@ -154,6 +154,159 @@
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+.carrito-cantidad-valor {
+    min-width: 36px;
+
+    text-align: center;
+    font-weight: var(--font-medium);
+}
+
+
+.min-vh-50 {
+    min-height: 50vh;
+}
+
+/* ------------ Resumen del Carrito ------------ */
+.carrito-resumen {
+    max-width: 900px;
+    margin-top: 3rem;
+}
+
+.carrito-resumen-titulo {
+    margin-bottom: 1.25rem;
+
+    color: var(--color-text-titles);
+    font-size: 1.25rem;
+}
+
+.carrito-resumen-tabla {
+    width: 100%;
+}
+
+.carrito-resumen-fila {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) 0.6fr 1fr 1fr;
+    gap: 1rem;
+
+    padding: 0.85rem 0;
+
+    border-bottom: 1px solid rgba(160, 82, 45, 0.14);
+}
+
+.carrito-resumen-producto {
+    color: var(--color-primary);
+    font-weight: var(--font-medium);
+}
+
+.carrito-resumen-subtotal {
+    text-align: right;
+}
+
+.carrito-resumen-total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding-top: 1.25rem;
+
+    color: var(--color-primary);
+
+    font-family: var(--font-editorial);
+    font-size: 1.35rem;
+}
+
+.carrito-resumen-total strong {
+    font-weight: var(--font-bold);
+}
+
+.carrito-resumen-encabezado {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) 0.6fr 1fr 1fr;
+    gap: 1rem;
+
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.25rem;
+
+    border-bottom: 2px solid rgba(160, 82, 45, 0.35);
+
+    color: rgba(0, 0, 0, 0.55);
+    font-size: var(--caption-size);
+    font-weight: var(--font-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+
+.carrito-resumen-encabezado span:last-child {
+    text-align: right;
+}
+
+@media (max-width: 700px) {
+    .carrito-section{
+        margin: 25px 0 25px 0;
+    }
+
+    .carrito-item {
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        padding: 1rem;
+    }
+
+    .carrito-item-img {
+        width: 100px;
+        height: 80px;
+    }
+
+    .carrito-item-actions {
+        width: 100%;
+
+        justify-content: flex-end;
+
+        padding-top: 0.5rem;
+    }
+
+    /* Estilos para Resumen */
+    .carrito-resumen-fila {
+        grid-template-columns: 1fr 0.5fr;
+        gap: 0.5rem;
+    }
+
+    .carrito-resumen-fila span:nth-child(3),
+    .carrito-resumen-fila span:nth-child(4) {
+        text-align: left;
+    }
+
+    .carrito-resumen-encabezado {
+        grid-template-columns: 1fr 0.5fr;
+        gap: 0.5rem;
+    }
+
+    .carrito-resumen-encabezado span:nth-child(3),
+    .carrito-resumen-encabezado span:nth-child(4) {
+        display: none;
+    }
+}
+
+/* Estilos para pop-up de confirmación de eliminación de item del carrito */
+.modal-carrito {
+    background-color: var(--color-background);
+
+    border: 1px solid rgba(160, 82, 45, 0.2);
+    border-radius: 4px;
+}
+
+.modal-carrito .modal-header,
+.modal-carrito .modal-footer {
+    border-color: rgba(160, 82, 45, 0.14);
+}
+
+.modal-carrito .modal-title {
+    color: var(--color-text-titles);
+    font-size: 1.5rem;
+}
+
+/* ------------ Buttons ------------ */
+
 .btn-cantidad {
     width: 36px;
     height: 36px;
@@ -187,12 +340,7 @@
     cursor: not-allowed;
 }
 
-.carrito-cantidad-valor {
-    min-width: 36px;
 
-    text-align: center;
-    font-weight: var(--font-medium);
-}
 
 .btn-eliminar-carrito {
     width: 40px;
@@ -225,6 +373,8 @@
     outline-offset: 2px;
 }
 
+
+
 .btn-carrito-explorar {
     display: inline-flex;
     align-items: center;
@@ -253,53 +403,7 @@
     outline-offset: 4px;
 }
 
-.min-vh-50 {
-    min-height: 50vh;
-}
 
-@media (max-width: 700px) {
-    .carrito-section{
-        margin: 25px 0 25px 0;
-    }
-
-    .carrito-item {
-        align-items: flex-start;
-        flex-wrap: wrap;
-
-        padding: 1rem;
-    }
-
-    .carrito-item-img {
-        width: 100px;
-        height: 80px;
-    }
-
-    .carrito-item-actions {
-        width: 100%;
-
-        justify-content: flex-end;
-
-        padding-top: 0.5rem;
-    }
-}
-
-/* Estilos para pop-up de confirmación de eliminación de item del carrito */
-.modal-carrito {
-    background-color: var(--color-background);
-
-    border: 1px solid rgba(160, 82, 45, 0.2);
-    border-radius: 4px;
-}
-
-.modal-carrito .modal-header,
-.modal-carrito .modal-footer {
-    border-color: rgba(160, 82, 45, 0.14);
-}
-
-.modal-carrito .modal-title {
-    color: var(--color-text-titles);
-    font-size: 1.5rem;
-}
 
 .btn-carrito-cancelar,
 .btn-carrito-eliminar {
@@ -323,6 +427,8 @@
     background-color: rgba(160, 82, 45, 0.08);
 }
 
+
+
 .btn-carrito-eliminar {
     border: 1px solid var(--color-primary);
 
@@ -333,3 +439,4 @@
 .btn-carrito-eliminar:hover {
     opacity: 0.85;
 }
+

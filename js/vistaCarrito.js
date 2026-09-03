@@ -61,9 +61,37 @@ function renderizarCarrito() {
             <ul class="list-unstyled m-0">
     `;
 
+    let totalGeneral = 0;
+    let resumenHtml = "";
+
     itemsCarrito.forEach((item) => {
         const productoCatalogo = productos.find((p) => p.id === item.id);
         if (!productoCatalogo) return;
+
+        // Para el resumen del carrito
+        const subtotal = productoCatalogo.precio * item.cantidad;
+
+        totalGeneral += subtotal;
+
+        resumenHtml += `
+            <div class="carrito-resumen-fila">
+                <span class="carrito-resumen-producto">
+                    ${productoCatalogo.nombre}
+                </span>
+        
+                <span>
+                    ${item.cantidad}
+                </span>
+        
+                <span>
+                    $${productoCatalogo.precio.toLocaleString("es-AR")}
+                </span>
+        
+                <span class="carrito-resumen-subtotal">
+                    $${subtotal.toLocaleString("es-AR")}
+                </span>
+            </div>
+        `;
 
         html += `
             <li class="carrito-item">
@@ -156,6 +184,32 @@ function renderizarCarrito() {
 
     html += `
             </ul>
+            
+            <!-- Resumen de compra -->
+            <div class="carrito-resumen">
+                <h2 class="carrito-resumen-titulo texto-titulo-elegante">
+                    Resumen de tu selección
+                </h2>
+    
+                <div class="carrito-resumen-encabezado">
+                    <span>Producto</span>
+                    <span>Cantidad</span>
+                    <span>Precio unitario</span>
+                    <span>Subtotal</span>
+                </div>
+    
+                <div class="carrito-resumen-tabla">
+                    ${resumenHtml}
+                </div>
+    
+                <div class="carrito-resumen-total">
+                    <span>Total general</span>
+    
+                    <strong>
+                        $${totalGeneral.toLocaleString("es-AR")}
+                    </strong>
+                </div>
+            </div>
         </section>
     `;
 
