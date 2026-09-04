@@ -76,7 +76,9 @@ function renderizarCarrito(foco = null) {
                 Tu carrito
             </h1>
 
-            <ul class="list-unstyled m-0">
+            <div class="row g-4 align-items-start carrito-layout">
+                <div class="col-12 col-xl-8">
+                    <ul class="list-unstyled m-0">
     `;
 
     let totalGeneral = 0;
@@ -205,40 +207,44 @@ function renderizarCarrito(foco = null) {
     });
 
     html += `
-            </ul>
+                    </ul>
+            </div>
             
             <!-- Resumen de compra -->
-            <div class="carrito-resumen">
-                <h2 class="carrito-resumen-titulo texto-titulo-elegante">
-                    Resumen de tu selección
-                </h2>
-    
-                <div class="carrito-resumen-scroll">
-                    <table class="carrito-resumen-tabla">
-                        <thead>
-                            <tr class="carrito-resumen-encabezado">
-                                <th scope="col">Producto</th>
-                                <th scope="col">Cantidad</th>
-                                <th scope="col">Precio unitario</th>
-                                <th scope="col">Subtotal</th>
-                            </tr>
-                        </thead>
-                    
-                        <tbody>
-                            ${resumenHtml}
-                        </tbody>
-                    </table>
-                </div>
-    
-                <div class="carrito-resumen-total">
-                    <span>Total general</span>
-    
-                    <strong>
-                        $${totalGeneral.toLocaleString("es-AR")}
-                    </strong>
-                </div>
+            <div class="col-12 col-xl-4">
+                <aside class="carrito-resumen" aria-labelledby="carrito-resumen-titulo" >
+                    <h2 id="carrito-resumen-titulo" class="carrito-resumen-titulo texto-titulo-elegante">
+                        Resumen de tu selección
+                    </h2>
+        
+                    <div class="carrito-resumen-scroll">
+                        <table class="carrito-resumen-tabla">
+                            <thead>
+                                <tr class="carrito-resumen-encabezado">
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio unitario</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                            </thead>
+                        
+                            <tbody>
+                                ${resumenHtml}
+                            </tbody>
+                        </table>
+                    </div>
+        
+                    <div class="carrito-resumen-total">
+                        <span>Total general</span>
+        
+                        <strong>
+                            $${totalGeneral.toLocaleString("es-AR")}
+                        </strong>
+                    </div>
+                </aside>
             </div>
-        </section>
+        </div>
+    </section>
     `;
 
     contenedorCarrito.innerHTML = html;
