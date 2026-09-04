@@ -14,7 +14,7 @@ export function productCard(producto) {
                     <h2 class="product-card-nombre">${producto.nombre}</h2>
                     <p class="product-card-precio">${precio}</p>
             
-                    <a href="producto.html?id=${producto.id}" class="product-card-link" aria-label="Ver detalles de ${producto.nombre}">
+                    <a href="producto.html?id=${producto.id}" class="product-card-link texto-titulo-cta" aria-label="Ver detalles de ${producto.nombre}">
                         <span>Ver pieza</span>
                         <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
                     </a>

@@ -8,6 +8,10 @@
     max-width: 650px;
 }
 
+.productos-header h1 {
+    color: var(--color-text-titles);
+}
+
 .productos-filtros .input-group-text,
 .productos-filtros .form-control,
 .productos-filtros .form-select {
