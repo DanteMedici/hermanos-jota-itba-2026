@@ -26,3 +26,7 @@ yarn-error.log*
 
 .DS_Store
 Thumbs.db
+
+
+# Archivos de contexto local o notas
+CONTEXT.md

@@ -7,8 +7,8 @@ Este proyecto consiste en construir la fachada completa y la experiencia interac
 - Valentina Andrada Perino (Referente) - Usuario GitHub: valenap-utn
 - Milagros Escarlon - Usuario GitHub: milagros888
 - Agustín Alberto Leiva - Usuario GitHub: agustin-arg
-- Julia Angela Pombo Ruiz - Usuario GitHub: juliapomboruiz
-- Sofia Erra - Usuario GitHub: SofiErra
+- Dante Medici - Usuario GitHub: dantemedici
+- Gerónimo Martín Córdoba - Usuario GitHub: gerocd
 
 ## Tecnologías Utilizadas
 
