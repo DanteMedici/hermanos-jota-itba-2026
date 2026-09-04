@@ -46,7 +46,7 @@ function crearTarjetaProducto(producto) {
         "home-producto-link texto-titulo-cta";
 
     verProducto.innerHTML = `
-        Ver pieza
+        <span>Ver pieza</span>
         <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
     `;
 

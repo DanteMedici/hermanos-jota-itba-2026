@@ -59,6 +59,9 @@
     --caption-size: 0.75rem;
     --caption-letter-spacing: 0.02em;
 
+    /* Cards */
+    --product-card-title-size: 1.2rem;
+
     /* Botones y CTAs */
     --cta-letter-spacing: 0.08em;
 
@@ -67,6 +70,10 @@
     /*--logo-color-inverted: var(--color-background);*/
 
     --logo-min-width-digital: 120px;
+
+    /* ===== Cards ===== */
+    /* Fondo */
+    --color-surface-light: rgba(255, 255, 255, 0.58);
 }
 
 body {
