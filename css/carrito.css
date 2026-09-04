@@ -473,3 +473,15 @@
     outline: 2px solid var(--color-premium);
     outline-offset: 3px;
 }
+
+@media (min-width: 1200px) {
+    .carrito-resumen {
+        position: sticky;
+        top: 2rem;
+        margin-top: 0;
+    }
+
+    .carrito-layout {
+        padding-inline:5rem;
+    }
+}
