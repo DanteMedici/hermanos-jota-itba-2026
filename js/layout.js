@@ -6,6 +6,7 @@ async function loadHeader() {
     const resp = await fetch(new URL("/vistas/layout/header.html", projectRoot));
     document.getElementById("header-placeholder").outerHTML = await resp.text();
 
+    await inlineLogo(document.querySelector(".navbar-brand"));
     configureHeaderLinks();
 
     setActiveNavLink();
@@ -16,7 +17,35 @@ async function loadHeader() {
 async function loadFooter() {
     const resp = await fetch(new URL("/vistas/layout/footer.html", projectRoot));
     document.getElementById("footer-placeholder").outerHTML = await resp.text();
+        
     setFooterYear();
+}
+
+// Inyecta el logo como SVG inline para poder controlar su color vía CSS
+async function inlineLogo(container, variant = "logo-primary") {
+    const placeholder = container.querySelector(".logo-container");
+    if (!placeholder) return;
+
+    try {
+        const resp = await fetch(new URL("assets/logo/logo.svg", projectRoot));
+        if (!resp.ok) throw new Error(`No se pudo cargar el logo: ${resp.status}`);
+
+        const svgText = await resp.text();
+        const temp = document.createElement("div");
+        temp.innerHTML = svgText;
+
+        const svgElement = temp.querySelector("svg");
+        if (!svgElement) throw new Error("El archivo del logo no contiene un <svg> válido");
+
+        svgElement.classList.add("logo", variant);
+        svgElement.setAttribute("role", "img");
+        svgElement.setAttribute("aria-label", "Hermanos Jota");
+
+        placeholder.replaceWith(svgElement);
+    } catch (err) {
+        console.error("Error al insertar el logo:", err);
+        // Fallback: dejamos el placeholder vacío en vez de romper el header entero
+    }
 }
 
 function setActiveNavLink() {
@@ -43,9 +72,6 @@ function configureHeaderLinks() {
     const contactoLink = document.querySelector('[data-route="contacto"]');
     const logoLink = document.querySelector(".navbar-brand");
     const carritoLinks = document.querySelectorAll('[data-route="carrito"]');
-
-    const logo = document.querySelector(".logo");
-    logo.src = new URL("assets/logo/logo.svg", projectRoot);
 
     logoLink.href = new URL("index.html", projectRoot);
 
