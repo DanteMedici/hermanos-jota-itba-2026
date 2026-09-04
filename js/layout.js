@@ -10,6 +10,8 @@ async function loadHeader() {
     configureHeaderLinks();
 
     setActiveNavLink();
+
+    document.dispatchEvent(new Event("headerCargado"));
 }
 
 async function loadFooter() {
