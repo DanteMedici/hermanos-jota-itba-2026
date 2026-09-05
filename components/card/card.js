@@ -1,0 +1,2 @@
+// En un futuro, si nos piden más cards, vamos a tener que hacer esto.
+// Por ahora, aplicamos YAGNI: You Aren't Gonna Need It. No necesitamos un componente de card genérico, porque no hay más cards que las de producto. Si en el futuro se nos pide un componente de card genérico, lo hacemos.

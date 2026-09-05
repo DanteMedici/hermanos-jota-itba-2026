@@ -1,0 +1,188 @@
+/* ==========================================================================
+   ESTILOS ADICIONALES PARA LA VISTA DE CONTACTO
+   Creados para mantener la consistencia con el manual de marca (Hermanos Jota)
+   y asegurar que no existan estilos en línea (CSS inline) en el HTML.
+   ========================================================================== */
+
+/* Estilo de las "cards" */
+
+/* form */
+.contacto-formulario {
+    padding-top: 0.5rem;
+}
+
+.contacto-formulario > h3 {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+/* info */
+.contacto-info {
+    padding-top: 0.5rem;
+}
+
+.contacto-info > h3 {
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+/* formato de info dentro de info */
+.contacto-info-item {
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.contacto-info-item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+}
+
+.contacto-columna-info {
+    gap: 1.5rem;
+}
+
+/* Cards - Garantía y Sustentabilidad */
+.contacto-beneficio {
+    padding: 2rem 1.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.contacto-beneficio-col {
+    border-bottom: 1px solid var(--border-light);
+}
+
+
+@media (min-width: 992px) {
+    .contacto-beneficio {
+        border-bottom: 0;
+    }
+
+    .col-lg-4:not(:nth-child(3n)) .contacto-beneficio {
+        border-right: 1px solid var(--border-light);
+    }
+
+    .contacto-beneficio-col {
+        border-bottom: 0;
+    }
+
+    .contacto-beneficio-col:not(:nth-last-child(-n + 2)) {
+        border-bottom: 1px solid var(--border-light);
+    }
+
+    .contacto-beneficios-fila .contacto-beneficio-col:not(:last-child) {
+        border-right: 1px solid var(--border-light);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .contacto-beneficio-ultimo {
+        margin-inline: auto;
+    }
+}
+
+.contacto-sustentabilidad {
+    margin-top: 6rem;
+    padding-block: 5rem;
+    background-color: var(--color-surface-light);
+}
+
+.contacto-sustentabilidad-header {
+    margin-bottom: 3rem;
+}
+
+/* Colores de texto corporativos basados en las variables de marca */
+.texto-marca-primario {
+    color: var(--color-primary);
+    /* Color principal: Terracota/Marrón cálido */
+}
+
+.texto-marca-secundario {
+    color: var(--color-secondary);
+    /* Color secundario: Verde oliva suave */
+}
+
+.texto-marca-suave {
+    color: var(--color-suave);
+    /* Color de acento suave: Rosa viejo/Cálido */
+}
+
+.texto-marca-premium {
+    color: var(--color-premium);
+    /* Color de acento premium: Dorado */
+}
+
+/* Bordes finos y sutiles utilizando el color principal con transparencia */
+.border-marca-suave {
+    border: 1px solid var(--border-soft);
+}
+
+/* Línea divisoria decorativa con el color y opacidad de la marca */
+.divider-marca {
+    width: 80px;
+    height: 2px;
+    background-color: var(--color-primary);
+    border: 0;
+    opacity: 0.3;
+}
+
+/* Botón principal adaptado a la paleta de colores y comportamiento hover */
+.btn-marca-primario {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-background);
+    transition: opacity 0.3s ease;
+}
+
+.btn-marca-primario:hover,
+.btn-marca-primario:focus,
+.btn-marca-primario:active {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-background);
+    opacity: 0.85;
+}
+
+/* Altura del contenedor del mapa interactivo */
+.mapa-taller-container {
+    height: 380px;
+    margin-top: 5rem;
+    padding: 0.5rem;
+    background-color: var(--color-white);
+    border: 1px solid var(--border-soft);
+    overflow: hidden;
+}
+
+/* Filtro sepia/cálido para integrar visualmente el mapa con la estética de la marca */
+.mapa-taller-iframe {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: sepia(30%) contrast(90%) hue-rotate(-20deg);
+}
+
+/* Modal personalizado con el fondo alabastro y bordes terracota corporativos */
+.modal-marca {
+    background-color: var(--color-background);
+    border: 1px solid var(--color-primary) !important;
+}
+
+/* Filtro sepia para el botón de cierre (X) del modal para que combine con la paleta cálida */
+.btn-close-marca {
+    filter: sepia(100%) hue-rotate(-20deg) saturate(300%);
+}
+
+
+/* :hover para links de contacto directo */
+a.texto-marca-primario {
+    transition: opacity 0.2s ease;
+}
+
+a.texto-marca-primario:hover {
+    color: var(--color-primary);
+    opacity: 0.7;
+}
+
+.bg-marca-white {
+    background-color: var(--color-white);
+}
