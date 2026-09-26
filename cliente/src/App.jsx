@@ -4,9 +4,9 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./vistas/Home/Home";
+import ProductList from "./vistas/Productos/ProductList";
 
 import "./App.css";
-
 
 function App() {
     const [carrito, setCarrito] = useState([]);
@@ -27,10 +27,7 @@ function App() {
                     <Route
                         path="/productos"
                         element={
-                            <section>
-                                <h1>Productos</h1>
-                                <p>Listado de productos</p>
-                            </section>
+                            <ProductList />
                         }
                     />
 
