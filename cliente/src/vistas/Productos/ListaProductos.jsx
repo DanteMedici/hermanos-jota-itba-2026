@@ -50,14 +50,26 @@ function ListaProductos() {
   const productosFiltrados = useMemo(() => {
     const textoBusqueda = normalizarTexto(busqueda);
 
+    let regexBusqueda;
+    try {
+      regexBusqueda = new RegExp(`\\b${textoBusqueda}`, 'i');
+    } catch (error) {
+      regexBusqueda = null;
+    }
+    // El try/catch está para evitar errores por expresiones que no sean válidas para el regex, como un asterisco al principio.
     return productos.filter((producto) => {
       const coincideCategoria =
         categoria === "todos" || producto.categoria === categoria;
 
-      const coincideBusqueda =
-        textoBusqueda === "" ||
-        normalizarTexto(producto.nombre).includes(textoBusqueda);
-
+      let coincideBusqueda = true;
+      if (textoBusqueda !== "") {
+        const nombreNormalizado = normalizarTexto(producto.nombre);
+        if (regexBusqueda) {
+          coincideBusqueda = regexBusqueda.test(nombreNormalizado);
+        } else {
+          coincideBusqueda = nombreNormalizado.includes(textoBusqueda);
+        }
+      }
       return coincideCategoria && coincideBusqueda;
     });
   }, [productos, busqueda, categoria]);
