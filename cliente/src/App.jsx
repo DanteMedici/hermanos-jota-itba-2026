@@ -4,7 +4,8 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./vistas/Home/Home";
-import ProductList from "./vistas/Productos/ProductList";
+import ListaProductos from "./vistas/Productos/ListaProductos";
+import DetalleProducto from "./vistas/DetalleProducto/DetalleProducto";
 
 import "./App.css";
 
@@ -27,7 +28,14 @@ function App() {
                     <Route
                         path="/productos"
                         element={
-                            <ProductList />
+                            <ListaProductos />
+                        }
+                    />
+
+                    <Route
+                        path="/productos/:id"
+                        element={
+                            <DetalleProducto />
                         }
                     />
 
