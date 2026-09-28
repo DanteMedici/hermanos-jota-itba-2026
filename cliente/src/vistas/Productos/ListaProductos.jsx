@@ -79,7 +79,7 @@ function ListaProductos() {
       <div className="container">
         <div className="productos-header mb-4">
           <p class="productos-eyebrow texto-titulo-cta mb-2">Colección</p>
-          <h1 class="texto-titulo-elegante display-5 mb-3">Catálogo de Productos</h1>
+          <h1 class="texto-titulo-elegante mb-3">Catálogo de Productos</h1>
           <p class="texto-principal">Explorá nuestra selección exclusiva de mobiliario y objetos de diseño.</p>
         </div>
 
@@ -130,10 +130,10 @@ function ListaProductos() {
         )}
 
         {!cargando && !error && productosFiltrados.length === 0 && (
-          <div className="text-center my-5">
-            <PackageOpen size={48} className="mb-3 text-muted" aria-hidden="true" />
+          <div className="className=productos-vacio text-center my-5">
+            <PackageOpen size={48} className="mb-3" aria-hidden="true" />
             <h3 className="texto-titulo-elegante h4 mb-2">No se encontraron productos</h3>
-            <p className="texto-principal text-muted">
+            <p className="texto-principal">
               Intentá cambiar los términos de búsqueda o los filtros aplicados.
             </p>
           </div>

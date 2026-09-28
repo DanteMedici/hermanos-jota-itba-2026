@@ -93,11 +93,6 @@
   opacity: 0.85;
 }
 
-.detalle-btn-volver:focus-visible {
-  outline: 3px solid var(--color-premium);
-  outline-offset: 3px;
-}
-
 .detalle-topbar {
   display: flex;
   flex-wrap: wrap;
@@ -118,11 +113,6 @@
 
 .detalle-volver:hover {
   text-decoration: underline;
-}
-
-.detalle-volver:focus-visible {
-  outline: 2px solid var(--color-primary);
-  outline-offset: 3px;
 }
 
 @media (min-width: 992px) {

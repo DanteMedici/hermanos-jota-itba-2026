@@ -1,13 +1,12 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
+import "./App.css";
 
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
 import Home from "./vistas/Home/Home";
 import ListaProductos from "./vistas/Productos/ListaProductos";
 import DetalleProducto from "./vistas/DetalleProducto/DetalleProducto";
-
-import "./App.css";
 
 function App() {
     const [carrito, setCarrito] = useState([]);

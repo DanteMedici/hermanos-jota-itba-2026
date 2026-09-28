@@ -117,13 +117,6 @@
   color: var(--color-primary);
 }
 
-.home-btn-primary:focus-visible,
-.home-btn-secondary:focus-visible {
-  outline: 2px solid var(--color-premium);
-  outline-offset: 4px;
-}
-
-
 /* ===== DESTACADOS ===== */
 
 .home-destacados {
@@ -218,8 +211,7 @@
 
 .home-producto-categoria {
   margin-bottom: 0.3rem;
-
-  color: var(--color-secondary);
+  color: var(--color-primary);
   text-transform: uppercase;
 }
 

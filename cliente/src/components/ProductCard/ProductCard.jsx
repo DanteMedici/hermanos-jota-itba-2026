@@ -27,7 +27,7 @@ function ProductCard({ producto }) {
           {producto.categoria}
         </p>
 
-        <h3 className="product-card-nombre texto-enfasis-editorial">
+        <h3 className="product-card-nombre">
           {producto.nombre}
         </h3>
 
