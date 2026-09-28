@@ -78,9 +78,9 @@ function ListaProductos() {
     <section className="productos-section" aria-labelledby="productos-title">
       <div className="container">
         <div className="productos-header mb-4">
-          <p class="productos-eyebrow texto-titulo-cta mb-2">Colección</p>
-          <h1 class="texto-titulo-elegante mb-3">Catálogo de Productos</h1>
-          <p class="texto-principal">Explorá nuestra selección exclusiva de mobiliario y objetos de diseño.</p>
+          <p className="productos-eyebrow texto-titulo-cta mb-2" id="productos-title">Colección</p>
+          <h1 className="texto-titulo-elegante mb-3">Catálogo de Productos</h1>
+          <p className="texto-principal">Explore nuestra selección exclusiva de mobiliario y objetos de diseño.</p>
         </div>
 
         <div className="productos-filtros row g-3 align-items-center mb-5">
@@ -130,7 +130,7 @@ function ListaProductos() {
         )}
 
         {!cargando && !error && productosFiltrados.length === 0 && (
-          <div className="className=productos-vacio text-center my-5">
+          <div className="productos-vacio text-center my-5">
             <PackageOpen size={48} className="mb-3" aria-hidden="true" />
             <h3 className="texto-titulo-elegante h4 mb-2">No se encontraron productos</h3>
             <p className="texto-principal">
@@ -149,7 +149,7 @@ function ListaProductos() {
         </div>
 
         {!cargando && !error && productosFiltrados.length > 0 && (
-          <div className="row g-4" aria-live="polite">
+          <div className="row g-4">
             {productosFiltrados.map((producto) => (
               <div key={producto.id} className="col-12 col-sm-6 col-lg-4">
                 <ProductCard producto={producto} />

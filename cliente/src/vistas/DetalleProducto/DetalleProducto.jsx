@@ -78,7 +78,7 @@ function DetalleProducto() {
 
             <Link to="/productos" className="detalle-volver texto-titulo-cta">
               <ArrowLeft size={16} aria-hidden="true" />
-              Volver al catálogo
+              Ir al catálogo
             </Link>
           </div>
 
