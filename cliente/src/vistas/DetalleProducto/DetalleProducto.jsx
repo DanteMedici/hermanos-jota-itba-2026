@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
 import "./DetalleProducto.styles.css";
 import { obtenerProductoPorId } from "../../services/productosService";
+import { ArrowLeft } from "lucide-react";
 
 function DetalleProducto() {
   const { id } = useParams();
@@ -55,7 +56,7 @@ function DetalleProducto() {
             </p>
             <button
               type="button"
-              className="btn-marca-primario texto-titulo-cta"
+              className="detalle-btn-volver texto-titulo-cta"
               onClick={() => navigate("/productos")}
             >
               Volver al catálogo
@@ -68,11 +69,18 @@ function DetalleProducto() {
   return (
       <section className="detalle-section">
         <div className="container py-4 py-lg-5">
-          <nav aria-label="Migas de pan" className="detalle-breadcrumb mb-4">
-            <Link to="/productos">Productos</Link>
-            {" / "}
-            <span aria-current="page">{producto.nombre}</span>
-          </nav>
+          <div className="detalle-topbar mb-4">
+            <nav aria-label="Migas de pan" className="detalle-breadcrumb">
+              <Link to="/productos">Productos</Link>
+              {" / "}
+              <span aria-current="page">{producto.nombre}</span>
+            </nav>
+
+            <Link to="/productos" className="detalle-volver texto-titulo-cta">
+              <ArrowLeft size={16} aria-hidden="true" />
+              Volver al catálogo
+            </Link>
+          </div>
 
           <article className="row g-4 g-lg-5">
             <div className="col-12 col-lg-7">
@@ -104,27 +112,27 @@ function DetalleProducto() {
                 </h2>
                 <div className="table-responsive">
                   <table className="table detalle-tabla">
-                      <caption className="visually-hidden">
-                          Especificaciones técnicas de {producto.nombre}
-                      </caption>
-                      <tbody>
-                          <tr>
-                            <th scope="row">Medidas</th>
-                            <td>{producto.medidas}</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">Materiales</th>
-                            <td>{producto.materiales}</td>
-                          </tr>
-                          {Object.entries(producto.especificaciones || {}).map(
-                            ([nombre, valor]) => (
-                              <tr key={nombre}>
-                                <th scope="row">{nombre}</th>
-                                <td>{valor}</td>
-                              </tr>
-                            )
-                          )}
-                      </tbody>
+                    <caption className="visually-hidden">
+                        Especificaciones técnicas de {producto.nombre}
+                    </caption>
+                    <tbody>
+                        <tr>
+                          <th scope="row">Medidas</th>
+                          <td>{producto.medidas}</td>
+                        </tr>
+                        <tr>
+                          <th scope="row">Materiales</th>
+                          <td>{producto.materiales}</td>
+                        </tr>
+                        {Object.entries(producto.especificaciones || {}).map(
+                          ([nombre, valor]) => (
+                            <tr key={nombre}>
+                              <th scope="row">{nombre}</th>
+                              <td>{valor}</td>
+                            </tr>
+                          )
+                        )}
+                    </tbody>
                   </table>
                 </div>
               </section>
