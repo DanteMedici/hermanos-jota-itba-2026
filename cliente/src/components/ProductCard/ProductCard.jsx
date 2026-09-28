@@ -3,6 +3,10 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 
 function ProductCard({ producto }) {
+  const precio = producto.precio > 0
+    ? `$${producto.precio.toLocaleString('es-AR')}`
+    : 'Consultar precio';
+
   return (
     <Link
       to={`/productos/${producto.id}`}
@@ -23,9 +27,13 @@ function ProductCard({ producto }) {
           {producto.categoria}
         </p>
 
-        <h3 className="product-card-nombre texto-enfasis-editorial">
+        <h3 className="product-card-nombre">
           {producto.nombre}
         </h3>
+
+        <p className="product-card-precio">
+          {precio}
+        </p>
 
         <span className="product-card-link texto-titulo-cta">
           <span>Ver pieza</span>

@@ -10,3 +10,14 @@ export async function obtenerProductos() {
   const { data } = await response.json();
   return data;
 }
+
+// Obtiene el detalle de un producto por su id
+export async function obtenerProductoPorId(id) {
+  const response = await fetch(`${API_URL}/productos/${id}`);
+
+  if (!response.ok)
+    throw new Error(`Error al obtener el producto: ${response.status}`);
+
+  const { data } = await response.json();
+  return data;
+}

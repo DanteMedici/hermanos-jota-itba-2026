@@ -261,7 +261,7 @@ function Home() {
 
             {/* ================= CTA FINAL ================= */}
             <section
-                className="home-cta"
+                className="home-cta on-dark"
                 aria-labelledby="cta-title"
             >
                 <div className="container">
