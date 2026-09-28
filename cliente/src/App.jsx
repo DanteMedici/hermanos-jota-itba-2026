@@ -7,6 +7,7 @@ import Footer from "./components/Footer/Footer";
 import Home from "./vistas/Home/Home";
 import ListaProductos from "./vistas/Productos/ListaProductos";
 import DetalleProducto from "./vistas/DetalleProducto/DetalleProducto";
+import Contacto from "./vistas/Contacto/Contacto";
 
 function App() {
     const [carrito, setCarrito] = useState([]);
@@ -40,12 +41,7 @@ function App() {
 
                     <Route
                         path="/contacto"
-                        element={
-                            <section>
-                                <h1>Contacto</h1>
-                                <p>Formulario de contacto</p>
-                            </section>
-                        }
+                        element={<Contacto/>}
                     />
 
                     <Route
