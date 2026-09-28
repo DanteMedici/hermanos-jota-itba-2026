@@ -1,11 +1,37 @@
 import "./Home.styles.css";
 import { ArrowRight, Leaf, Hand, History } from "lucide-react";
 import { Link } from "react-router-dom";
+import { obtenerProductos } from "../../services/productosService";
+import { useState, useEffect } from "react";
 
-function Home({ productos = [] }) {
-    const destacados = productos.filter(
-        (producto) => producto.destacado
-    );
+function Home() {
+    const [destacados, setDestacados] = useState([]);
+    const [cargando, setCargando] = useState(true);
+
+    useEffect(() => {
+        let activo = true;
+
+        async function cargarDestacados() {
+            try {
+                const productos = await obtenerProductos();
+
+                if (activo)
+                    setDestacados(productos.filter((p) => p.destacado));
+            } catch (err) {
+                // Si falla, la sección de destacados queda vacía
+                console.error("No se pudieron cargar los destacados:", err);
+            } finally {
+                if (activo)
+                    setCargando(false);
+            }
+        }
+
+        cargarDestacados();
+
+        return () => {
+            activo = false;
+        };
+    }, []);
 
     return (
         <>
@@ -94,7 +120,11 @@ function Home({ productos = [] }) {
                         className="row g-4"
                         aria-live="polite"
                     >
-                        {destacados.map((producto) => (
+                        {cargando && (
+                            <p className="texto-principal">Cargando piezas destacadas...</p>
+                        )}
+
+                        {!cargando && destacados.map((producto) => (
                             <article
                                 key={producto.id}
                                 className="col-12 col-sm-6 col-lg-3"
@@ -107,7 +137,7 @@ function Home({ productos = [] }) {
                                     <figure className="home-producto-figure">
                                         <img
                                             className="home-producto-image"
-                                            src={`/${producto.imagen}`}
+                                            src={producto.imagen}
                                             alt={producto.nombre}
                                             loading="lazy"
                                         />
