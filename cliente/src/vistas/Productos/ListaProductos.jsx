@@ -12,7 +12,7 @@ function normalizarTexto(texto) {
     .trim();
 }
 
-function ListaProductos() {
+function ListaProductos({ onAgregarAlCarrito }) {
   const [productos, setProductos] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(null);
@@ -152,7 +152,10 @@ function ListaProductos() {
           <div className="row g-4">
             {productosFiltrados.map((producto) => (
               <div key={producto.id} className="col-12 col-sm-6 col-lg-4">
-                <ProductCard producto={producto} />
+                <ProductCard
+                  producto={producto}
+                  onAgregarAlCarrito={onAgregarAlCarrito}
+                />
               </div>
             ))}
           </div>

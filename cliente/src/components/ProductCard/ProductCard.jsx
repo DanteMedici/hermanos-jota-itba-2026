@@ -1,18 +1,14 @@
 import "./ProductCard.styles.css";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ShoppingCart } from "lucide-react";
 import { Link } from "react-router-dom";
 
-function ProductCard({ producto }) {
+function ProductCard({ producto, onAgregarAlCarrito }) {
   const precio = producto.precio > 0
     ? `$${producto.precio.toLocaleString('es-AR')}`
     : 'Consultar precio';
 
   return (
-    <Link
-      to={`/productos/${producto.id}`}
-      className="product-card"
-      aria-label={`Ver detalle de ${producto.nombre}`}
-    >
+    <article className="product-card">
       <figure className="product-card-figure">
         <img
           className="product-card-image"
@@ -35,12 +31,28 @@ function ProductCard({ producto }) {
           {precio}
         </p>
 
-        <span className="product-card-link texto-titulo-cta">
+        <Link
+          to={`/productos/${producto.id}`}
+          className="product-card-link texto-titulo-cta"
+          aria-label={`Ver detalle de ${producto.nombre}`}
+        >
           <span>Ver pieza</span>
           <ArrowRight size={16} aria-hidden="true" />
-        </span>
+        </Link>
+
+        {onAgregarAlCarrito && (
+          <button
+            type="button"
+            className="btn btn-marca-primario product-card-btn-carrito texto-titulo-cta"
+            aria-label={`Añadir ${producto.nombre} al carrito`}
+            onClick={() => onAgregarAlCarrito(producto)}
+          >
+            <ShoppingCart size={16} aria-hidden="true" />
+            <span>Añadir al carrito</span>
+          </button>
+        )}
       </div>
-    </Link>
+    </article>
   );
 }
 
