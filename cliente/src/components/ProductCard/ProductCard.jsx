@@ -18,7 +18,6 @@ function ProductCard({ producto }) {
           className="product-card-image"
           src={producto.imagen}
           alt={producto.nombre}
-          loading="lazy"
         />
       </figure>
 
@@ -27,9 +26,9 @@ function ProductCard({ producto }) {
           {producto.categoria}
         </p>
 
-        <h3 className="product-card-nombre">
+        <h2 className="product-card-nombre">
           {producto.nombre}
-        </h3>
+        </h2>
 
         <p className="product-card-precio">
           {precio}

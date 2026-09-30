@@ -40,8 +40,7 @@
 
 .home-hero .home-eyebrow {
   margin-bottom: 1rem;
-  color: var(--color-primary);
-  opacity: 0.85;
+  color: var(--color-dark-gray);
 }
 
 .home-hero-title {
@@ -303,7 +302,6 @@
 
 .home-cta .home-eyebrow {
   color: var(--color-background);
-  opacity: 0.8;
 }
 
 .home-cta-content {
@@ -322,7 +320,6 @@
   max-width: 650px;
   margin: 0 auto 2rem;
   color: var(--color-background);
-  opacity: 0.9;
 }
 
 
@@ -376,7 +373,7 @@
   }
 
   .home-hero-title {
-    font-size: clamp(2.6rem, 13vw, 3.5rem);
+    font-size: clamp(2rem, 11vw, 3rem);
   }
 
   .home-hero-description {
