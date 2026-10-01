@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const router = require('./routes/router');
+const requestLogger = require('./middlewares/requestLogger');
 const notFoundHandler = require('./middlewares/notFoundHandler');
 const errorHandler = require('./middlewares/errorHandler');
 
@@ -13,7 +14,10 @@ app.use(cors());
 
 // ============ MIDDLEWARES ============
 
-// Permite que Express interprete cuerpos de perticiones en formato JSON
+// Registra el método HTTP y la URL de cada petición entrante
+app.use(requestLogger);
+
+// Permite que Express interprete cuerpos de peticiones en formato JSON
 app.use(express.json());
 
 // =============== ROUTES ===============
