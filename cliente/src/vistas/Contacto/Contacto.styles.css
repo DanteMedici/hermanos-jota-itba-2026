@@ -11,7 +11,16 @@
     outline-offset: 3px;
 }
 
-
+.form-select {
+    border-color: var(--border-field);
+    background-color: var(--color-white);
+    color: var(--color-text-titles);
+    border-radius: 0;
+    border-width: 1px;
+    padding: 0.75rem 1rem;
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
 /* ===== HERO ===== */
 
 .contacto-hero {

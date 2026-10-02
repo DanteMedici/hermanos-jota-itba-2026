@@ -72,6 +72,8 @@ function Home() {
                                 src="/assets/img/biblioteca-recoleta.png"
                                 alt="Biblioteca Recoleta de Hermanos Jota"
                                 className="home-hero-image"
+                                width="760"
+                                height="570"
                             />
                         </figure>
                     </div>
