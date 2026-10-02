@@ -53,7 +53,7 @@ function App() {
                     <Route
                         path="/productos/:id"
                         element={
-                            <DetalleProducto />
+                            <DetalleProducto onAgregarAlCarrito={handleAgregarAlCarrito} />
                         }
                     />
 
