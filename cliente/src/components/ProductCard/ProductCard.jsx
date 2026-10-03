@@ -33,7 +33,6 @@ function ProductCard({ producto, onAgregarAlCarrito }) {
           className="product-card-image"
           src={producto.imagen}
           alt={producto.nombre}
-          loading="lazy"
         />
       </figure>
 
@@ -42,9 +41,9 @@ function ProductCard({ producto, onAgregarAlCarrito }) {
           {producto.categoria}
         </p>
 
-        <h3 className="product-card-nombre">
+        <h2 className="product-card-nombre">
           {producto.nombre}
-        </h3>
+        </h2>
 
         <div className="product-card-precio-row">
           <p className="product-card-precio">

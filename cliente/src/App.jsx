@@ -8,6 +8,7 @@ import Home from "./vistas/Home/Home";
 import ListaProductos from "./vistas/Productos/ListaProductos";
 import DetalleProducto from "./vistas/DetalleProducto/DetalleProducto";
 import Contacto from "./vistas/Contacto/Contacto";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 
 function App() {
     const [carrito, setCarrito] = useState([]);
@@ -30,6 +31,7 @@ function App() {
 
     return (
         <>
+            <ScrollToTop />
             <Header
                 cartCount={cartCount}
             />

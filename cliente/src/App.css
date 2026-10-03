@@ -1,8 +1,3 @@
-/* ===== FUENTES ===== */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
-
-
 /* ===== DESIGN TOKENS ===== */
 
 :root {
@@ -21,6 +16,8 @@
 
     /* ===== Backgrounds ===== */
     --color-background: #F5E6D3;
+
+    --color-alabaster: rgba(255, 255, 255, 0.32);
 
     /* ===== Detalles Premium / acentos ===== */
     --color-premium: #D4A437;
