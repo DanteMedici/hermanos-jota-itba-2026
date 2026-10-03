@@ -22,6 +22,18 @@ function App() {
         cargando
     } = useCart();
 
+    const handleModificarCantidad = (id, delta) => {
+        setCarrito((prev) =>
+            prev.map((item) =>
+                item.id === id ? { ...item, cantidad: Math.max(1, item.cantidad + delta) } : item
+            )
+        );
+    };
+
+    const handleEliminarDelCarrito = (id) => {
+        setCarrito((prev) => prev.filter((item) => item.id !== id));
+    };
+
     return (
         <>
             <ScrollToTop />
@@ -58,14 +70,17 @@ function App() {
                     />
 
                     <Route
-                        path="/carrito"
-                        element={
-                            <Carrito
-                                carrito={carrito}
-                                onActualizarCantidad={actualizarCantidad}
-                                onEliminarDelCarrito={eliminarDelCarrito}
-                                onVaciarCarrito={vaciarCarrito}
-                                cargando={cargando}
+  path="/carrito"
+  element={
+    <Carrito
+      cargando={cargando}
+      carrito={carrito}
+      onEliminarDelCarrito={eliminarDelCarrito}
+      onModificarCantidad={actualizarCantidad}
+      onVaciarCarrito={vaciarCarrito}
+    />
+  }
+/>
                             />
                         }
                     />
