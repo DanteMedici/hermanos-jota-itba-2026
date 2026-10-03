@@ -8,6 +8,7 @@ import Home from "./vistas/Home/Home";
 import ListaProductos from "./vistas/Productos/ListaProductos";
 import DetalleProducto from "./vistas/DetalleProducto/DetalleProducto";
 import Contacto from "./vistas/Contacto/Contacto";
+import Carrito from "./vistas/Carrito/Carrito";
 
 function App() {
     const [carrito, setCarrito] = useState([]);
@@ -26,6 +27,18 @@ function App() {
             }
             return [...prevCarrito, { ...producto, cantidad: 1 }];
         });
+    };
+
+    const handleModificarCantidad = (id, delta) => {
+        setCarrito((prev) =>
+            prev.map((item) =>
+                item.id === id ? { ...item, cantidad: Math.max(1, item.cantidad + delta) } : item
+            )
+        );
+    };
+
+    const handleEliminarDelCarrito = (id) => {
+        setCarrito((prev) => prev.filter((item) => item.id !== id));
     };
 
     return (
@@ -65,10 +78,11 @@ function App() {
                     <Route
                         path="/carrito"
                         element={
-                            <section>
-                                <h1>Carrito</h1>
-                                <p>Productos agregados: {cartCount}</p>
-                            </section>
+                            <Carrito
+                                carrito={carrito}
+                                onModificarCantidad={handleModificarCantidad}
+                                onEliminarDelCarrito={handleEliminarDelCarrito}
+                            />
                         }
                     />
                 </Routes>
