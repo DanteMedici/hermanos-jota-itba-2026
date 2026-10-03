@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import "./App.css";
 
@@ -9,25 +8,19 @@ import ListaProductos from "./vistas/Productos/ListaProductos";
 import DetalleProducto from "./vistas/DetalleProducto/DetalleProducto";
 import Contacto from "./vistas/Contacto/Contacto";
 import Carrito from "./vistas/Carrito/Carrito";
+import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import { useCart } from "./context/CartContext";
 
 function App() {
-    const [carrito, setCarrito] = useState([]);
-
-    const cartCount = carrito.reduce((acc, item) => acc + item.cantidad, 0);
-
-    const handleAgregarAlCarrito = (producto) => {
-        setCarrito((prevCarrito) => {
-            const itemExistente = prevCarrito.find((item) => item.id === producto.id);
-            if (itemExistente) {
-                return prevCarrito.map((item) =>
-                    item.id === producto.id
-                        ? { ...item, cantidad: item.cantidad + 1 }
-                        : item
-                );
-            }
-            return [...prevCarrito, { ...producto, cantidad: 1 }];
-        });
-    };
+    const {
+        carrito,
+        cartCount,
+        agregarAlCarrito,
+        actualizarCantidad,
+        eliminarDelCarrito,
+        vaciarCarrito,
+        cargando
+    } = useCart();
 
     const handleModificarCantidad = (id, delta) => {
         setCarrito((prev) =>
@@ -43,6 +36,7 @@ function App() {
 
     return (
         <>
+            <ScrollToTop />
             <Header
                 cartCount={cartCount}
             />
@@ -58,7 +52,7 @@ function App() {
                         path="/productos"
                         element={
                             <ListaProductos
-                                onAgregarAlCarrito={handleAgregarAlCarrito}
+                                onAgregarAlCarrito={agregarAlCarrito}
                             />
                         }
                     />
@@ -66,7 +60,7 @@ function App() {
                     <Route
                         path="/productos/:id"
                         element={
-                            <DetalleProducto onAgregarAlCarrito={handleAgregarAlCarrito} />
+                            <DetalleProducto onAgregarAlCarrito={agregarAlCarrito} />
                         }
                     />
 
@@ -76,12 +70,17 @@ function App() {
                     />
 
                     <Route
-                        path="/carrito"
-                        element={
-                            <Carrito
-                                carrito={carrito}
-                                onModificarCantidad={handleModificarCantidad}
-                                onEliminarDelCarrito={handleEliminarDelCarrito}
+  path="/carrito"
+  element={
+    <Carrito
+      cargando={cargando}
+      carrito={carrito}
+      onEliminarDelCarrito={eliminarDelCarrito}
+      onModificarCantidad={actualizarCantidad}
+      onVaciarCarrito={vaciarCarrito}
+    />
+  }
+/>
                             />
                         }
                     />

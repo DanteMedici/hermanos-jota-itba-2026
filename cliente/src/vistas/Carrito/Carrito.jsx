@@ -1,100 +1,149 @@
-import { Link } from "react-router-dom";
-import { Armchair } from "lucide-react";
-import CarritoItem from "../../components/CarritoItem/CarritoItem";
+import { useState, useRef } from "react";
 import "./Carrito.styles.css";
+import CarritoVacio from "./components/CarritoVacio";
+import CarritoItem from "./components/CarritoItem";
+import CarritoResumen from "./components/CarritoResumen";
+import ModalEliminarProducto from "./components/ModalEliminarProducto";
+import StatusModal from "../../components/StatusModal/StatusModal";
 
-const formatearPrecio = (valor) =>
-  valor > 0 ? `$${valor.toLocaleString("es-AR")}` : "A confirmar";
+function Carrito({
+    carrito = [],
+    onActualizarCantidad,
+    onEliminarDelCarrito,
+    onVaciarCarrito,
+    cargando = false
+}) {
+    const [productoPendienteEliminar, setProductoPendienteEliminar] = useState(null);
+    const [modalCompraVisible, setModalCompraVisible] = useState(false);
+    const [mensajeStatus, setMensajeStatus] = useState("");
+    const exploreButtonRef = useRef(null);
 
-function Carrito({ carrito, onModificarCantidad, onEliminarDelCarrito }) {
-  if (carrito.length === 0) {
-    return (
-      <section className="container carrito-vacio py-5 d-flex flex-column align-items-center justify-content-center text-center">
-        <Armchair size={64} className="carrito-vacio-icono mb-3" aria-hidden="true" />
-        <h1 className="texto-titulo-elegante mb-3">Tu selección aún está vacía</h1>
-        <p className="texto-principal mb-4 mx-auto">
-          Redescubre el arte de vivir. Aún no has seleccionado ninguna pieza para tu hogar, pero nuestra colección te está esperando con muebles diseñados para perdurar.
-        </p>
-        <Link
-          to="/productos"
-          className="btn btn-marca-primario texto-titulo-cta rounded-0 px-4 py-3"
-        >
-          Explorar colección
-        </Link>
-      </section>
+    const anunciar = (mensaje) => {
+        setMensajeStatus("");
+        requestAnimationFrame(() => {
+            setMensajeStatus(mensaje);
+        });
+    };
+
+    const handleActualizarCantidad = (id, nuevaCantidad) => {
+        const item = carrito.find((i) => i.id === id);
+        if (onActualizarCantidad) {
+            onActualizarCantidad(id, nuevaCantidad);
+        }
+        if (item) {
+            anunciar(`Cantidad de ${item.nombre} actualizada a ${nuevaCantidad}`);
+        }
+    };
+
+    const handleSolicitarEliminar = (item) => {
+        setProductoPendienteEliminar(item);
+    };
+
+    const handleConfirmarEliminar = () => {
+        if (!productoPendienteEliminar) return;
+
+        const productoEliminado = productoPendienteEliminar;
+        if (onEliminarDelCarrito) {
+            onEliminarDelCarrito(productoEliminado.id);
+        }
+        setProductoPendienteEliminar(null);
+        anunciar(`${productoEliminado.nombre} fue eliminado del carrito`);
+    };
+
+    const handleCancelarEliminar = () => {
+        setProductoPendienteEliminar(null);
+    };
+
+    const handleIniciarCompra = () => {
+        setModalCompraVisible(true);
+    };
+
+    const handleCerrarModalCompra = () => {
+        setModalCompraVisible(false);
+        if (onVaciarCarrito) {
+            onVaciarCarrito();
+        }
+        anunciar("¡Compra simulada completada con éxito! Tu carrito ha sido vaciado.");
+        setTimeout(() => {
+            exploreButtonRef.current?.focus();
+        }, 50);
+    };
+
+    const totalGeneral = carrito.reduce(
+        (total, item) => total + (item.precio || 0) * item.cantidad,
+        0
     );
-  }
 
-  const totalGeneral = carrito.reduce(
-    (acc, item) => acc + item.precio * item.cantidad,
-    0
-  );
-
-  return (
-    <section className="container py-4 py-lg-5" aria-labelledby="carrito-titulo">
-      <h1 id="carrito-titulo" className="texto-titulo-elegante carrito-titulo mb-4">
-        Tu carrito
-      </h1>
-
-      <div className="row g-4 align-items-start">
-        <div className="col-12 col-xl-7">
-          <ul className="list-unstyled d-grid gap-3 m-0">
-            {carrito.map((item) => (
-              <CarritoItem
-                key={item.id}
-                item={item}
-                onModificarCantidad={onModificarCantidad}
-                onEliminar={onEliminarDelCarrito}
-              />
-            ))}
-          </ul>
-        </div>
-
-        <div className="col-12 col-xl-5">
-          <aside className="carrito-resumen" aria-labelledby="carrito-resumen-titulo">
-            <h2 id="carrito-resumen-titulo" className="texto-titulo-elegante carrito-resumen-titulo mb-3">
-              Resumen de tu selección
-            </h2>
-
-            <div className="table-responsive">
-              <table className="table carrito-tabla">
-                <thead>
-                  <tr>
-                    <th scope="col">Producto</th>
-                    <th scope="col">Cantidad</th>
-                    <th scope="col">Precio unitario</th>
-                    <th scope="col" className="text-end">Subtotal</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {carrito.map((item) => (
-                    <tr key={item.id}>
-                      <th scope="row" className="carrito-tabla-producto">
-                        {item.nombre}
-                      </th>
-                      <td>{item.cantidad}</td>
-                      <td>{formatearPrecio(item.precio)}</td>
-                      <td className="text-end">
-                        {formatearPrecio(item.precio * item.cantidad)}
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
+    return (
+        <section className="carrito-main">
+            {/* Live region para lectores de pantalla */}
             <div
-              className="carrito-resumen-total d-flex justify-content-between align-items-center pt-3"
-              aria-live="polite"
+                id="carrito-status"
+                className="visually-hidden"
+                aria-live="polite"
+                aria-atomic="true"
             >
-              <span>Total general</span>
-              <strong>{formatearPrecio(totalGeneral)}</strong>
+                {mensajeStatus}
             </div>
-          </aside>
-        </div>
-      </div>
-    </section>
-  );
+
+            <div id="carrito-container" className="container min-vh-50">
+                {cargando ? (
+                    <div className="text-center my-5 py-5" role="status" aria-live="polite">
+                        <div className="spinner-border text-primary" style={{ color: "var(--color-primary)" }} aria-hidden="true" />
+                        <p className="texto-principal mt-3">Sincronizando carrito...</p>
+                    </div>
+                ) : carrito.length === 0 ? (
+                    <CarritoVacio exploreRef={exploreButtonRef} />
+                ) : (
+                    <div className="carrito-section" aria-labelledby="carrito-titulo">
+                        <h1 id="carrito-titulo" className="carrito-titulo">
+                            Tu carrito
+                        </h1>
+
+                        <div className="row g-4 align-items-start carrito-layout">
+                            <div className="col-12 col-xl-8">
+                                <ul className="list-unstyled m-0">
+                                    {carrito.map((item) => (
+                                        <CarritoItem
+                                            key={item.id}
+                                            item={item}
+                                            onActualizarCantidad={handleActualizarCantidad}
+                                            onSolicitarEliminar={handleSolicitarEliminar}
+                                        />
+                                    ))}
+                                </ul>
+                            </div>
+
+                            <div className="col-12 col-xl-4">
+                                <CarritoResumen
+                                    carrito={carrito}
+                                    totalGeneral={totalGeneral}
+                                    onFinalizarCompra={handleIniciarCompra}
+                                />
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            {/* Modal de confirmación de eliminación */}
+            <ModalEliminarProducto
+                show={Boolean(productoPendienteEliminar)}
+                producto={productoPendienteEliminar}
+                onConfirmar={handleConfirmarEliminar}
+                onCancelar={handleCancelarEliminar}
+            />
+
+            {/* Modal de confirmación de compra simulada */}
+            <StatusModal
+                show={modalCompraVisible}
+                title="¡Gracias por tu compra!"
+                message="Tu pedido ha sido registrado con éxito en esta simulación. No se ha requerido ningún cobro real. Ahora vaciaremos tu carrito para que puedas seguir explorando nuestra colección."
+                actionLabel="Continuar explorando"
+                onClose={handleCerrarModalCompra}
+            />
+        </section>
+    );
 }
 
 export default Carrito;
