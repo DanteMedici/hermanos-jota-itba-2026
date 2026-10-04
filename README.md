@@ -16,6 +16,14 @@ El repositorio se encuentra organizado de la siguiente manera:
 └── README.md
 ```
 
+## Arquitectura
+
+El proyecto utiliza una arquitectura cliente-servidor.
+
+El cliente, desarrollado con React, se encarga de la interfaz de usuario. El servidor, desarrollado con Node.js y Express, expone una API REST que proporciona los datos necesarios para la aplicación.
+
+La comunicación entre ambas partes se realiza mediante solicitudes HTTP utilizando `fetch`. El cliente realiza peticiones a los endpoints de la API y el servidor responde con los datos correspondientes en formato JSON.
+
 ## Requisitos previos
 
 Para ejecutar el proyecto es necesario tener instalado:
@@ -112,6 +120,20 @@ Respuesta esperada:
 }
 ```
 
+### Productos
+
+Permite obtener el listado completo de productos.
+
+```http
+GET /api/productos
+```
+
+Permite obtener un producto específico mediante su identificador.
+
+```http
+GET /api/productos/:id
+```
+
 ## Tecnologías
 
 ### Frontend
@@ -128,10 +150,19 @@ Respuesta esperada:
 - CORS
 - dotenv
 
+## Decisiones técnicas
+
+- Separación del frontend y backend en `cliente/` y `servidor/`, manteniendo independientes sus responsabilidades.
+- Uso de React para el desarrollo de la interfaz de usuario.
+- Uso de Node.js y Express para implementar la API REST.
+- Uso de `fetch` para la comunicación entre el cliente y el servidor.
+- Uso de CORS para permitir la comunicación entre ambas aplicaciones durante el desarrollo.
+- Uso de variables de entorno para configurar el puerto del servidor.
+
 ## Integrantes
 
-- Valentina Andrada Perino (Referente) - Usuario GitHub: valenap-utn 
-- Milagros Escarlon - Usuario GitHub: milagros888 
-- Agustín Alberto Leiva - Usuario GitHub: agustin-arg 
-- Dante Medici - Usuario GitHub: dantemedici 
+- Valentina Andrada Perino (Referente) - Usuario GitHub: valenap-utn
+- Milagros Escarlon - Usuario GitHub: milagros888
+- Agustín Alberto Leiva - Usuario GitHub: agustin-arg
+- Dante Medici - Usuario GitHub: dantemedici
 - Gerónimo Martín Córdoba - Usuario GitHub: gerocd
